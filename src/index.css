@@ -1,0 +1,160 @@
+body{
+  font-family: Poppins;
+  font-size: medium;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.card{
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    display: flex;
+    position: relative;
+
+}
+
+.card .card-img{
+  max-width: 60% ;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 15px; 
+}
+
+.card .card-description .card-title{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  color: #000000;
+}
+/* main color : 338573 */
+.card .card-description .card-text{
+  font-family: Poppins;
+  margin-top: 12px;
+  font-size: small;
+  color: #338573 ;
+  display: 'flex';
+  align-items: 'center';
+  display: flex;
+}
+
+button{
+  background-color: #338573;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0; /* Position the button at the right edge of the container */
+  font-size: 0.9em;
+  
+}
+
+.custom-button{
+  right: 0;
+  margin-right: 30px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+/* element with icon */
+.element-and-icon{
+  display: 'flex';
+  align-items: 'center';
+  margin-right: '20px';
+}
+
+.card-icon{
+  margin-left: '8px';
+  width: '1px';
+  height: '1px' ;
+}
+
+/* for the job description */
+
+ul.job-details {
+  list-style: none; /* Remove the bullets */
+  padding: 0;
+  font-family: Poppins;
+  font-size: large;
+}
+
+ul.job-details li{
+  margin: 25px;
+}
+
+ul.job-details  li.job-description {
+  margin-top: 40px;
+}
+
+.job-title-details {
+  background-color: #F4F5F7;
+  text-align: center;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Welcome messgaes */
+.welcome-msg-container{
+  display: flex;
+  position: relative;
+  margin-bottom: 40px;
+  
+}
+.welcome-msg-txt{
+  width: 40%;
+  position: absolute;
+  top: 35%; /* Position the text at the vertical center */
+  left: 20%; /*Position the text at the horizontal center */
+  transform: translate(-50%, -50%); /* Center the text perfectly */
+  margin-left: 20px;
+}
+
+.welcome-msg-container .title{
+  color: #338573;
+  font-size: 4em;
+}
+
+
+.welcome-msg-container .msg{
+
+}
+
+.welcome-msg-container .img{
+  /* width: 100%;
+  height: 80%; */
+}
+.welcome-msg-container .img-container{
+  width: 100%;
+  right: 0;
+
+}
+
+/* Search */
+.search-container{
+  margin-bottom: 40px;
+  display: flex;
+  align-items:center;
+  position: absolute;
+  top: 70%; 
+  left: 1%; 
+  
+}
+
+
+.search-container .edit-text{
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+  background-color: #fcfcfc;
+  width: 500px;
+  height: 50px;
+  padding: 10px;
+  margin-right: 120px;
+
+}
