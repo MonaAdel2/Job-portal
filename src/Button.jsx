@@ -5,7 +5,8 @@ function Button(props) {
     }
 
     return (
-        <button className="button" onClick={() => clickHandler("Hey hey its ok..")}>{title}</button>
+            <button className="button" onClick={() => clickHandler("Hey hey its ok..")}>{title}</button>
+        
     );
 }
 

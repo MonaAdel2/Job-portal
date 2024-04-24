@@ -1,5 +1,6 @@
-import JobCard from './JobCard'
-import JobDetails from './JobDetails'
+import JobCard from './JobCard.jsx'
+import JobDetails from './JobDetails.jsx'
+import MyHeader from './MyHeader.jsx'
 
 function App() {
 
@@ -13,10 +14,12 @@ function App() {
 
   return (
     <>
+    <MyHeader/>
+    
     {/* A list of this card should display using the list of jobs availiable */}
     {/* <JobCard title = "Android Developer" type="Full time" salary="8500 L.E" location="Cairo"/> */}
     
-    <JobDetails jobDetails={jobDetails} />
+    <JobDetails/>
       
     </>
   )
