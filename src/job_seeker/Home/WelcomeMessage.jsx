@@ -1,4 +1,4 @@
-import welcome_image from '../assets/Image_banner.png'
+import welcome_image from '../../assets/Image_banner.png'
 import React, { useState } from 'react';
 import Search from './Search.jsx'
 

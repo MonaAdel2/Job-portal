@@ -1,6 +1,6 @@
-import WelcomeMessage from './Home/WelcomeMessage.jsx'
-import JobCard from './JobCard/JobCard.jsx';
-import './Home/home.css'
+import WelcomeMessage from './WelcomeMessage.jsx'
+import JobCard from '../JobCard/JobCard.jsx';
+import './home.css'
 
 function Home(){
     return(

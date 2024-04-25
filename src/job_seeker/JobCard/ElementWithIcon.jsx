@@ -1,15 +1,3 @@
-// function ElementWithIcon({label, icon}){
-//     return (
-//         <div className="element-and-icon">
-//             <img className="card-icon" src={icon} alt={label + " icon"} style={{ width: '12px', height: '12px', marginLeft: "20px", marginRight: "4px"}} />
-//             <span>{label}</span>
-//         </div>
-//     );
-
-// }
-
-// export default ElementWithIcon
-
 // another way to access the props label and icon instead of sending label and icon as seperated parameters
 import PropTypes from 'prop-types'
 

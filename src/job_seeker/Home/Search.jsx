@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from '../Shared/Button';
+import Button from '../../Shared/Button';
 
 function Search(){
 

@@ -1,6 +1,5 @@
-import JobCard from './JobCard/JobCard.jsx'
-import JobDetails from './JobDetails/JobDetails.jsx'
-import MyHeader from './NavBar/MyHeader.jsx'
+import JobDetails from './job_seeker/JobDetails/JobDetails.jsx'
+import MyHeader from './job_seeker/NavBar/MyHeader.jsx'
 import { Outlet } from "react-router-dom";
 
 // import { BrowserRouter as Router, Route } from 'react-router-dom';

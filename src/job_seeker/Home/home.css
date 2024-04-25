@@ -4,6 +4,7 @@
     position: relative;
     margin-bottom: 30px;
     
+    
   }
   .welcome-msg-txt{
     width: 40%;
@@ -11,7 +12,7 @@
     top: 33%; /* Position the text at the vertical center */
     left: 20%; /*Position the text at the horizontal center */
     transform: translate(-50%, -50%); /* Center the text perfectly */
-    margin-left: 20px;
+    margin-left: 40px;
   }
   
   .welcome-msg-container .title{
@@ -30,10 +31,9 @@
     align-items:center;
     position: absolute;
     top: 62%; 
-    left: 1%; 
+    left: 2.5%; 
     
   }
-  
   
   .search-container .edit-text{
     border: 1px solid #ccc;
@@ -43,7 +43,7 @@
     width: 500px;
     height: 50px;
     padding: 10px;
-    margin-right: 120px;
+    margin-right: 130px;
   
   }
   
