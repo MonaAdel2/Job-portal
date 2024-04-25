@@ -1,6 +1,9 @@
-import JobCard from './JobCard.jsx'
-import JobDetails from './JobDetails.jsx'
-import MyHeader from './MyHeader.jsx'
+import JobCard from './JobCard/JobCard.jsx'
+import JobDetails from './JobDetails/JobDetails.jsx'
+import MyHeader from './NavBar/MyHeader.jsx'
+import { Outlet } from "react-router-dom";
+
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
 
@@ -15,11 +18,12 @@ function App() {
   return (
     <>
     <MyHeader/>
+    <Outlet/>
     
     {/* A list of this card should display using the list of jobs availiable */}
     {/* <JobCard title = "Android Developer" type="Full time" salary="8500 L.E" location="Cairo"/> */}
     
-    <JobDetails/>
+    {/* <JobDetails/> */}
       
     </>
   )

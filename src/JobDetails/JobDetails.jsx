@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../Shared/Button";
 import React, {useEffect, useState } from "react";
 import './JobDetails.css'
  

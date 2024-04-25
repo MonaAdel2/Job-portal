@@ -1,18 +1,25 @@
 import './NavBar.css'
+import { Link } from "react-router-dom";
+
 function MyHeader(){
     
     return(
         <nav className="nav-bar">
             {/* <a href="/" className="site-title">Job Portal</a> */}
-            <span className="site-title">Job Portal</span>
+            <span className="site-title">
+                <Link to={'/'}>Job Portal</Link>
+                </span>
              <ul>
+                <li>
+                    <Link to={'/'}>Home</Link>
+                </li>
                 
                 <li>
-                    <a href="/saved_job">Saved Jobs</a>
+                    <Link to={'/savedJobs'}>Saved Jobs</Link>
                 </li>
 
                 <li>
-                    <a href="/chats">Chats</a>
+                    <Link to={'/chats'}>Chats</Link>
                 </li>
                 
                 <li>Logout</li>

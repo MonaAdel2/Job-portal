@@ -1,0 +1,56 @@
+.card{
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: left;
+    display: flex;
+    position: relative;
+
+}
+
+.card .card-img{
+  max-width: 60% ;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 15px; 
+}
+
+.card .card-description .card-title{
+  margin: 0px;
+  color: #000000;
+}
+/* main color : 338573 */
+.card .card-description .card-text{
+  font-family: Poppins;
+  margin-top: 12px;
+  font-size: small;
+  color: #338573 ;
+  display: 'flex';
+  align-items: 'left';
+  display: flex;
+}
+
+/* element with icon */
+.element-and-icon{
+    display: 'flex';
+    align-items: 'left';
+    /* margin-right: '20px'; */
+  }
+  
+  .card-icon{
+    margin-left: '8px';
+    width: '1px';
+    height: '1px' ;
+  }
+
+  
+  .custom-button{
+    right: 0;
+    margin-right: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
