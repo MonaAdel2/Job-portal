@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../Shared/Button';
+import { Link } from 'react-router-dom';
 
 function Search(){
 
@@ -10,7 +11,10 @@ function Search(){
                 className="edit-text"
                 placeholder="Search by job title ........"
             />
-            <Button title="Search"/>
+            {/* <Button title="Search"/> */}
+            <button className='button'>
+                <Link to={"/searchResults/"} className="button">Search</Link>
+            </button>
     
         </div>
     );

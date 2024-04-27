@@ -1,16 +1,20 @@
 import Button from "../../Shared/Button";
 import React, {useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import './JobDetails.css'
+
+
  
 function JobDetails(){
     // const details = props.jobDetails
+    const { jobId } = useParams();
 
     const [details, setJobDetails] = useState(null); // Stores fetched data
     useEffect (()  => {
         const fetchData = async () => {
         
             try {
-                const url = "https://jobconnectapi-1.onrender.com/jobs/1"; // Replace with your API endpoint
+                const url = "https://jobconnectapi-1.onrender.com/jobs/" + {jobId}; // Replace with your API endpoint
                 const response = await fetch (url, {
                     method: 'GET', 
                     headers: {
@@ -18,7 +22,7 @@ function JobDetails(){
                     }
                 });
                 const data = await response.json();
-                console.log('data is ${data}')
+                console.log('data is $'+{data})
                 setJobDetails (data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -28,7 +32,8 @@ function JobDetails(){
         fetchData();
     }, []); // Runs only on component mount
 
-    // console.log(details.salray);
+    
+
     return (
         <div style={{}}>
             {details && (
@@ -41,8 +46,8 @@ function JobDetails(){
                         <ul className="job-details">
                             <li><b>Employer : </b> {details.employer_name}</li>
                             <li><b>Job Type : </b> {details.jobType}</li>
-                            <li><b>Budget : </b> {`${details.salray}`}</li>
-                            <li><b>Creation Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
+                            <li><b>Salary : </b> {`${details.salray}`}</li>
+                            <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
                             <li className="job-description">
                                 <b>Job description </b>
                                 <p>{details.jobDescription}</p>
@@ -57,5 +62,6 @@ function JobDetails(){
         </div>
     );
 }
+
 
 export default JobDetails

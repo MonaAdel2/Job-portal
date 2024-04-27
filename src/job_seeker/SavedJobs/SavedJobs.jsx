@@ -1,11 +1,10 @@
-import WelcomeMessage from './WelcomeMessage.jsx'
-import JobCard from '../JobCard/JobCard.jsx';
+import SavedJobCard from './SavedJobCard.jsx'
 import React, {useEffect, useState } from "react";
-import './home.css'
-import { ToastContainer, toast } from 'react-toastify';
+import '../Home/home.css'
+import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Home(){
+function SavedJobs(){
 
     const [jobs, setJobs] = useState(null); // Stores fetched data
     useEffect (()  => {
@@ -31,36 +30,37 @@ function Home(){
         fetchData();
     }, []); // Runs only on component mount
 
-    const jobsList =[
-        { id: 1, name: 'Item 1' },
-        { id: 2, name: 'Item 2' },
-        { id: 3, name: 'Item 3' },
-        { id: 3, name: 'Item 3' }
-      ]
-
     return(
         <>
             {jobs && (
                 <>
-                    <WelcomeMessage/>
-                    <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
-                    <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                        {jobs.map(job => (
-                            <li style={{textDecoration: 'none'}}>
-                                <JobCard 
-                                        title={job.jobTitle}
-                                        // location={job.location}
-                                        salary={`${job.salray}`}
-                                        type={job.jobType}
-                                        jobId={job.jobId}/>
-                               
-                            </li>
-                        ))}
-                    </ul>
-                    <ToastContainer />
+                    <div>
+                        <h2 style={{marginLeft: '20px'}}>Saved Jobs</h2>
+                        <div>
+                            <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
+                                        {jobs.map(job => (
+                                            <li style={{textDecoration: 'none'}}>
+                                                <SavedJobCard 
+                                                        title={job.jobTitle}
+                                                        // location={job.location}
+                                                        salary={`${job.salray}`}
+                                                        type={job.jobType}/>
+                                            
+                                            </li>
+                                        ))}
+                            </ul>
+                        </div>
+                        <ToastContainer />
+                    </div>
                 </>
             )}
         </>
+
+       
+        
+
+       
     );
 }
-export default Home
+
+export default SavedJobs

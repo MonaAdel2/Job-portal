@@ -3,6 +3,7 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
     padding: 15px 10px;
+    margin-top: 10px;
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px;
@@ -58,4 +59,10 @@
     color: white;
     text-decoration: none;
     margin-right: 0;
+  }
+
+
+  .saved_card_icon{
+    margin-left: 50px;
+
   }
