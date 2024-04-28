@@ -15,11 +15,11 @@ function MyHeader(){
                 </li>
                 
                 <li>
-                    <Link to={'/savedJobs'}>Saved Jobs</Link>
+                    <Link to={'/job-seeker/savedJobs'}>Saved Jobs</Link>
                 </li>
 
                 <li>
-                    <Link to={'/chats'}>Chats</Link>
+                    <Link to={'/job-seeker/chats'}>Chats</Link>
                 </li>
                 
                 <li>Logout</li>

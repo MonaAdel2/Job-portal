@@ -22,7 +22,7 @@ padding: 10px;
 .btn-container{
     display: inline-block;
     position: absolute;
-    right: 0;
-    margin-right: 50px;
+    right: 15%;
+    /* margin-right: 200px; */
     white-space: nowrap;
 }

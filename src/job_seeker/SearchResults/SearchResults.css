@@ -1,0 +1,8 @@
+
+.filter-menu{
+    width: 100%;
+    display: flex;
+    padding: 5px;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
