@@ -1,6 +1,6 @@
 import Button from "../../Shared/Button";
 import React, {useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './JobDetails.css'
 
 
@@ -55,7 +55,10 @@ function JobDetails(){
                         </ul>
                     </div>
                     <div className="btn-container">
-                        <Button title="Apply This Job" />
+                        {/* <Button title="Apply This Job" /> */}
+                        <button className="button">
+                            <Link to={'/job-seeker/applyJob/'+ jobId}>Apply This Job</Link>
+                        </button>
                     </div>
                 </>
             )}

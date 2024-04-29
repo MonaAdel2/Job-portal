@@ -26,3 +26,9 @@ padding: 10px;
     /* margin-right: 200px; */
     white-space: nowrap;
 }
+
+.button a{
+  color: white;
+  text-decoration: none;
+  margin-right: 0;
+}
