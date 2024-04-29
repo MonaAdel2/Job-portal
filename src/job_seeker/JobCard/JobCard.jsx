@@ -49,7 +49,7 @@ function JobCard(props){
                                     marginRight: '15px',
                                     cursor: 'pointer'
                                 }} 
-                        onClick={() => handleClick2()}
+                        onClick={() => handleSave(props.jobId)}
                     >
                      
                 </img>
