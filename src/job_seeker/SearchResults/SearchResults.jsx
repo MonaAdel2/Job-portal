@@ -46,16 +46,16 @@ function SearchResults() {
     useEffect(() =>{
 
         const fetchData = async () => {
-        
+            const query = searchParams.get('query');
+            console.log("filterd jobs are", filteredJobs)
             try {
-                const url = `/jobs/search?title=${query}`; // Replace with your API endpoint
+                const url = `http://localhost:5109/jobs/search?title=${query}`; // Replace with your API endpoint
                 // const urlWithQueryParams = {url} + "?query" + {searchParams}
                 const response = await fetch (url, {
                     method: 'GET', 
                     headers: {
                         'Content-Type': 'application/json', // Adjust if your API requires headers
-                        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTQ0MTg5MDEsImlzcyI6ImpvYkNvbm5lY3QifQ.-cEEwG8d1Cs6mmgSzIQ4yaiu65ODaRlTs1kTsGUzacE'
-                    }
+                        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ1ODQ2NDgsImlzcyI6ImpvYkNvbm5lY3QifQ.M_SBjSPNkvFweu82Te8rTd5VHGoW3uOdmnY_dAlxOAA' }
                 });
                 const data = await response.json();
                 console.log('data is ${data}')
@@ -205,7 +205,7 @@ function SearchResults() {
                             <li style={{ textDecoration: 'none' }} key={index}>
                                 <JobCard
                                     title={job.jobTitle}
-                                    salary={`${job.salary}`}
+                                    salary={job.salary}
                                     type={job.jobType}
                                     jobId={job.id} />
                             </li>
