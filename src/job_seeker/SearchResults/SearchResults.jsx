@@ -27,7 +27,7 @@ function SearchResults() {
     // const [jobs, setJobs] = useState([]);
     // const [filteredJobs, setFilteredJobs] = useState([]);
 
-    const [filteredJobs, setFilteredJobs] = useState(jobsList);
+    const [filteredJobs, setFilteredJobs] = useState([]);
     const [locationFilter, setLocationFilter] = useState('');
     const [industryFilter, setIndustryFilter] = useState('');
     const [jobTitleFilter, setJobTitleFilter] = useState('');
