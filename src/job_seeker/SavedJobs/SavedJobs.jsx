@@ -41,10 +41,11 @@ function SavedJobs(){
                             <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                                         {jobs.map(job => (
                                             <li style={{textDecoration: 'none'}}>
-                                                <SavedJobCard 
+                                                <SavedJobCard
                                                         title={job.jobTitle}
+                                                        id = {job.jobId}
                                                         // location={job.location}
-                                                        salary={`${job.salray}`}
+                                                        salary={job.salray}
                                                         type={job.jobType}/>
                                             
                                             </li>
