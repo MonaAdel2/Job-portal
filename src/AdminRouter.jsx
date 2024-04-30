@@ -10,7 +10,7 @@ import SubmittedProposal from "./job_seeker/Proposal/SubmittedProposal.jsx";
 import Login from "./auth/Login/Login.jsx";
 import Signup from "./auth/Signup/Signup.jsx";
 
-export const router = createBrowserRouter([
+export const adminRouter = createBrowserRouter([
     {
         path: "",
         element: <App/>,
@@ -18,10 +18,6 @@ export const router = createBrowserRouter([
             {
                 path: "",
                 element: <Signup/>,
-            },
-            {
-                path: "/job-seeker",
-                element: <Home/>,
             },
             {
                 path: "/job-seeker/savedJobs",

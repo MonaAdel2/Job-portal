@@ -1,0 +1,109 @@
+.signup-container{
+    background-color: #EAEBEC;
+    /* height: 100%; */
+    /* justify-content: center; */
+    display: flex;
+}
+
+.register-form-container{
+    background-color: white;
+    height: fit-content;
+    width: auto;
+    /* display: flex; */
+    flex-direction: column;
+    padding: 30px 50px;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+   border: 1px solid white;
+   border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+.register-subheader{
+    font-weight: lighter;
+    font-size: 12px;
+    color: gray;
+    margin-top: 0; 
+    margin-bottom: 0; 
+    /* line-height: 1;  */
+}
+.register-header{
+    margin: 0px;
+}
+.welcome-container{
+    /* margin-left: 0px; */
+    padding: 0;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.button:hover{
+    background-color: #287567;
+    color: white;
+}
+.to-login-button{
+    background-color: none;
+    background: none;
+    border: none;
+    position: relative;
+    color: black;
+}
+
+.register-form{
+    align-items:center;
+  }
+  
+.register-form input{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+    background-color: #fcfcfc;
+    width: 350px;
+    height: auto;
+    padding: 10px;
+    margin-left: 20px;
+
+}
+
+.register-form label{
+    margin-left: 20px;
+    font-size: medium;
+}
+
+.button{
+    position:relative
+}
+
+.button a{
+    color: white;
+    text-decoration: none;
+    margin-right: 0;
+  }
+  
+.button-container{
+    position: relative;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.input-container{
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+}
+
+.select_{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+    padding: 15px 10px;
+}
+.select-container{
+
+}

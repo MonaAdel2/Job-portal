@@ -48,9 +48,9 @@ function SearchResults() {
         const fetchData = async () => {
         
             try {
-                const url = "https://jobconnectapi-1.onrender.com/admin/jobs"; // Replace with your API endpoint
-                const urlWithQueryParams = {url} + "?query" + {searchParams}
-                const response = await fetch (urlWithQueryParams, {
+                const url = `/jobs/search?title=${query}`; // Replace with your API endpoint
+                // const urlWithQueryParams = {url} + "?query" + {searchParams}
+                const response = await fetch (url, {
                     method: 'GET', 
                     headers: {
                         'Content-Type': 'application/json', // Adjust if your API requires headers

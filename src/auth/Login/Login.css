@@ -1,0 +1,121 @@
+.login-container{
+    background-color: #EAEBEC;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+}
+.login-form{
+    display: flex;
+   flex-direction: column;
+   margin-top: 5ch;
+}
+.login-form-container{
+    background-color: white;
+    height: 70ch;
+    width: 70ch;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+   border: 1px solid white;
+   border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+.welcome-container{
+    margin-top: 5ch;
+    text-align: left;
+    padding-left: 5ch;
+    font-family:  'Trebuchet MS', sans-serif;
+
+}
+.welcome-header{
+    font-weight: bold;
+    font-size: 35px;
+    margin-bottom: 0ch;
+}
+.enter-email-and-password{
+    font-weight: lighter;
+    font-size: 12px;
+    color: gray;
+    margin-top: 0; 
+    margin-bottom: 0; 
+    line-height: 1; 
+}
+input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.login-button{
+    background-color: #338573;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+    border: none;
+    color: white;  
+    margin-top: 5ch;
+    margin-left: 5ch;
+    margin-right: 5ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+}
+.login-button:hover{
+    background-color: rgba(77, 23, 255, 0.623);
+    color: white;
+}
+
+.password-input{
+   background-color: white;
+   font-size: 14px;
+   padding: 12px 28px;
+   border-radius: 12px;
+   border: 2px solid #EAEBEC;
+   border-color: #EAEBEC;
+   margin-left: 6ch;
+   margin-right: 7ch;
+}
+.password-input:focus {
+    border-color: #6236F5; 
+    outline: none;
+}
+.password-label{
+  color: black;
+   text-align: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-bottom: 1ch;
+   margin-left: 6ch;
+   font-family:'Trebuchet MS', sans-serif  ;
+}
+.email-label{
+    color: black;
+     text-align: left;
+    margin-left: 6ch;
+    margin-bottom: 1ch;
+    font-family: 'Trebuchet MS', sans-serif ;
+    font-size: 20px;
+}
+.email-input{
+    background-color: white;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #EAEBEC;
+    margin-left: 6ch;
+    margin-right: 7ch;
+}
+.email-input:focus{
+    border-color: #6236F5; 
+    outline: none;    
+}
+.to-register-button{
+    background-color: none;
+    background: none;
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    margin-top: 1ch;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
