@@ -19,10 +19,10 @@ export const router = createBrowserRouter([
                 path: "",
                 element: <Home/>,
             },
-            {
-                path: "/job-seeker",
-                element: <Home/>,
-            },
+            // {
+            //     path: "/job-seeker",
+            //     element: <Home/>,
+            // },
             {
                 path: "/job-seeker/savedJobs",
                 element: <SavedJobs/>,
