@@ -210,7 +210,7 @@ function SearchResults() {
                             <li style={{ textDecoration: 'none' }} key={index}>
                                 <JobCard
                                     title={job.jobTitle}
-                                    salary={job.salary.toString()}
+                                    salary={`${job.salray}`}
                                     type={job.jobType}
                                     jobId={job.id} />
                             </li>
