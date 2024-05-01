@@ -93,7 +93,7 @@ function SearchResults() {
 
 
     useEffect(() => {
-        let filtered = jobsList;
+        let filtered = filteredJobs;
 
         // location filter
         if (locationFilter !== '') {
