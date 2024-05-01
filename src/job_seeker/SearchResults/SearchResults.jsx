@@ -91,6 +91,11 @@ function SearchResults() {
         setDateFilter(event.target.value);
     };
 
+    const isDateInRange = (date, startDate, endDate) => {
+        const jobDate = new Date(date);
+        return jobDate >= startDate && jobDate <= endDate;
+    };
+
 
     useEffect(() => {
         let filtered = filteredJobs;
