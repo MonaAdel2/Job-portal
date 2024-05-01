@@ -9,6 +9,7 @@ import JobProposal from "./job_seeker/Proposal/JobProposal.jsx";
 import SubmittedProposal from "./job_seeker/Proposal/SubmittedProposal.jsx";
 import Login from "./auth/Login/Login.jsx";
 import Signup from "./auth/Signup/Signup.jsx";
+import Chat from './job_seeker/Chat/Chat.jsx'
 
 export const router = createBrowserRouter([
     {
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/job-seeker/chats",
-                element: <div>Chats</div>,
+                element: <Chat/>,
             },
             {
                 path: "/job-seeker/jobDetails/:jobId",

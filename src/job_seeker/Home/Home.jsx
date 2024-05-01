@@ -41,7 +41,7 @@ function Home(){
     return(
         <>
 
-                <>
+                {/* <>
                     <WelcomeMessage/>
                     <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
                     <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
@@ -58,9 +58,9 @@ function Home(){
                         ))}
                     </ul>
                     <ToastContainer />
-                </>
+                </> */}
 
-            {/* {jobs && (
+            {jobs && (
                 <>
                     <WelcomeMessage/>
                     <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
@@ -79,7 +79,7 @@ function Home(){
                     </ul>
                     <ToastContainer />
                 </>
-            )} */}
+            )}
         </>
     );
 }
