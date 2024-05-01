@@ -13,11 +13,11 @@ function Signup(props) {
     const submitUser = async() =>
     {
       const userData = {
-       email: {email},
-       password: {password},
-        firstname: {firstname},
-        secondname:{secondname},
-        role: {role}
+       email: email,
+       password: password,
+        firstname: firstname,
+        secondname:secondname,
+        role: role
        }
 
        console.log(userData)
@@ -36,14 +36,18 @@ function Signup(props) {
         const resultInbJson= await  result.json
         console.log(resultInbJson)
 
+        // localStorage.setItem("myToken", resultInbJson.token)
+
+
         if(role === "Job Seeker"){
+            // route to job seeker home page
            
+        }else if(role === "Employer"){
+            // route to employer home page
         }
 
-        // localStorage.setItem('myToken', receivedToken);
-
        }catch{
-            console.error("error to upload data")
+            console.error("error: can't register you")
        }
        
     }

@@ -37,7 +37,7 @@
 
 /* element with icon */
 .element-and-icon{
-    display: inline-block;
+    display: 'flex';
     align-items: 'left';
     /* margin-right: '20px'; */
   }
@@ -50,7 +50,7 @@
 
   
   .custom-button{
-    right: 0;
+    right: 0; 
     margin-right: 30px;
     margin-top: 15px;
     margin-bottom: 15px;

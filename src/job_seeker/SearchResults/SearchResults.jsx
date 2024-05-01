@@ -184,7 +184,7 @@ function SearchResults() {
                         <option value="">Select job type</option>
                         <option value="Full-time">Full-time</option>
                         <option value="Part-time">Part-time</option>
-                        <option value="Freelance">Freelance</option>
+                        <option value="Remote">Remote</option>
                     </select>
                     <select className='select' value={salaryFilter} onChange={handleSalaryChange}>
                         <option value="">Select salary</option>
@@ -205,7 +205,7 @@ function SearchResults() {
                             <li style={{ textDecoration: 'none' }} key={index}>
                                 <JobCard
                                     title={job.jobTitle}
-                                    salary={job.salary}
+                                    salary={job.salary.toString()}
                                     type={job.jobType}
                                     jobId={job.id} />
                             </li>

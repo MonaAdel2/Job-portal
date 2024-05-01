@@ -1,55 +1,55 @@
 import { createBrowserRouter,} from "react-router-dom";
 import App from './App.jsx'
 import Error404 from './Error404.jsx'
-import Home from './job_seeker/Home/Home.jsx'
-import JobDetails from "./job_seeker/JobDetails/JobDetails.jsx";
-import SavedJobs from "./job_seeker/SavedJobs/SavedJobs.jsx";
-import SearchResults from "./job_seeker/SearchResults/SearchResults.jsx";
-import JobProposal from "./job_seeker/Proposal/JobProposal.jsx";
-import SubmittedProposal from "./job_seeker/Proposal/SubmittedProposal.jsx";
-import Login from "./auth/Login/Login.jsx";
-import Signup from "./auth/Signup/Signup.jsx";
+import JobDetailsAdmin from './admin/JobDetails/JobDetailsAdmin.jsx'; 
+import DashboardAdmin from "./admin/Dashboard/DashboardAdmin.jsx";
+import JobCard from "./job_seeker/JobCard/JobCard.jsx";
+import ReadEmployerDetails from "./admin/CRUDComponents/EmployerDetails/ReadEmployerDetails.jsx";
+import ReadEmployerCard from "./admin/CRUDComponents/EmployerCard/EmployerCard.jsx";
+import EmployersList from './admin/CRUDComponents/EmployersList.jsx'
 
 export const adminRouter = createBrowserRouter([
     {
         path: "",
         element: <App/>,
         children: [
-            {
-                path: "",
-                element: <Signup/>,
-            },
-            {
-                path: "/job-seeker/savedJobs",
-                element: <SavedJobs/>,
-            },
-            {
-                path: "/job-seeker/chats",
-                element: <div>Chats</div>,
-            },
-            {
-                path: "/job-seeker/jobDetails/:jobId",
-                element: <JobDetails />
-            },
-            {
-                path: "/job-seeker/searchResults",
-                element: <SearchResults />
-            },
-            {
-                path: "/job-seeker/applyJob/:jobId",
-                element: <JobProposal />
-            },
-            {
-                path: "/job-seeker/applyJob/:jobId/submitted",
-                element: <SubmittedProposal/>
-            },
-            {
-                path: "*",
-                element: <Error404/>,
-            },
-        ],
-    },
+         
+          {    
+             path:"",
+             element: <DashboardAdmin/>,
+          },
 
-    
-    
-  ]);
+        {
+            path: "/admin/jobDetails/:jobId", 
+            element: <JobDetailsAdmin />
+        },
+         
+        {
+            path: "/admin/employerDetails/:employerId",
+            element: <ReadEmployerDetails/>,
+        },
+
+        // {
+        //     path: "/admin/employerCard",
+        //     element: <ReadEmployerCard/>,
+        // },
+
+        {
+            path: "/Admin/JobCard",
+            element: <JobCard/>,
+        },
+
+
+        {
+            path: "/admin/employers",
+            element: <EmployersList/>,
+        },
+        
+        {
+            path: "*",
+            element: <Error404/>,
+        },
+    ],
+
+    }
+]);

@@ -1,0 +1,63 @@
+.employer-name{
+  margin-left: 25px;
+}
+.employer-details {
+    list-style: none; /* Remove the bullets */
+    padding: 0;
+    font-size: large;
+  }
+  
+.employer-details li{
+margin: 25px;
+}
+
+.employer-details  li.employer-description {
+margin-top: 40px;
+}
+
+.employer-title-details {
+background-color: #F4F5F7;
+text-align: center;
+padding: 10px;
+}
+
+/* .btn-container{
+    display: inline-block;
+    position: absolute;
+    right: 0; 
+    margin-right: 50px;
+     white-space: nowrap; 
+} */
+/* 
+.btn-container2{
+  display: inline-block;
+  position: absolute;
+  right: 0; 
+  margin-right: 200px;
+   white-space: nowrap; 
+} */
+
+.crud-btn-container {
+  display: flex;
+}
+
+.button-container {
+  display: flex;
+  margin-right: 10px; 
+}
+
+.btn-container{
+  display: inline-block;
+  position: absolute;
+  right: 2%; 
+  margin-right: 120px;
+   white-space: nowrap; 
+}
+
+.btn-container2{
+display: inline-block;
+position: absolute;
+right: 2%; 
+margin-right: 50px;
+ white-space: nowrap; 
+}

@@ -1,0 +1,10 @@
+.add-btn-contanier{
+    display: flex;
+  right: 2%;
+  margin-top: 3%;
+  position: absolute;
+  text-align: center;
+}
+.button{
+    margin-top: 20px;
+}
