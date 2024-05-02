@@ -2,7 +2,7 @@ import React, {useEffect, useState } from "react";
 import './Dashboard.css'
 import { ToastContainer } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
-import JobCard from '../JobCard/JobCard.jsx';
+import JobCard from './JobCard/JobCard.jsx';
 
 
 function DashboardAdmin(){
@@ -12,12 +12,14 @@ function DashboardAdmin(){
         const fetchData = async () => {
         
             try {
-                const url = "https://jobconnectapi-1.onrender.com/admin/jobs"; // Replace with your API endpoint
+                const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ2ODYyMzUsImlzcyI6ImpvYkNvbm5lY3QifQ.JCuqCIzZTzbdHNO61aVqh4WbaekXdg04KtqewwY5oeA";
+
+                const url = "https://jobconnectapi-1.onrender.com/jobs/active"; // Replace with your API endpoint
                 const response = await fetch (url, {
                     method: 'GET', 
                     headers: {
                         'Content-Type': 'application/json', // Adjust if your API requires headers
-                        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTQzMDk4MjEsImlzcyI6ImpvYkNvbm5lY3QifQ.qemoWRGuI_cx2qKO835gnj1FgfxaQCaPEWKiijn8w1Q'
+                        'Authorization':`Bearer ${token}`                    
                     }
                 });
                 const data = await response.json();
@@ -41,8 +43,7 @@ function DashboardAdmin(){
     return(
         <>
 
-                <>
-                    {/* <WelcomeMessage/> */}
+                {/* <>
                     <h2 style={{ marginLeft: '20px' }}>Jobs</h2>
                     <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                         {jobsList.map(job => (
@@ -58,11 +59,10 @@ function DashboardAdmin(){
                         ))}
                     </ul>
                     <ToastContainer />
-                </>
-            {/* {jobs && (
+                </> */}
+            {jobs && (
                 <>
-                    <WelcomeMessage/>
-                    <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
+                    <h2 style={{ marginLeft: '20px' }}>Jobs</h2>
                     <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                         {jobs.map(job => (
                             <li style={{textDecoration: 'none'}}>
@@ -78,7 +78,7 @@ function DashboardAdmin(){
                     </ul>
                     <ToastContainer />
                 </>
-            )} */}
+            )}
         </>
     );
 }

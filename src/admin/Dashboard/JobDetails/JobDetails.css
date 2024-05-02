@@ -22,15 +22,15 @@ padding: 10px;
 .btn-container{
   display: inline-block;
   position: absolute;
-  right: 2%; 
-  margin-right: 50px;
+  right: 3%; 
+  margin-right: 60px;
    white-space: nowrap; 
 }
 
 
 .btn-container2{
 display: inline-block;
+width: fit-content;
 position: absolute;
-right: 5%;
- white-space: nowrap; 
+white-space: nowrap; 
 }
