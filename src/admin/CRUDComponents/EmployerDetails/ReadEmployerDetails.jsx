@@ -131,11 +131,15 @@ function ReadEmployerDetails(details){
                         </div>
 
                         <div className="btn-container">
-                            <button className="button" onClick={DeleteEmployer} >Delete</button>
+                            <button className="button" 
+                              style={{marginRight: '60px'}}
+                            onClick={DeleteEmployer} >Delete</button>
                         </div>
                          
                          <div className="btn-contanier2">
-                             <button className="button" onClick={onOpenModal}>
+                             <button className="button" 
+                             style={{marginRight: '40px'}}
+                             onClick={onOpenModal}>
                                    Update
                             </button>
                         </div>

@@ -1,9 +1,8 @@
 import Button_card from "./Button_card.jsx";
 import ElementWithIcon from "./ElementWithIcon.jsx";
-import locationIcon from "../../assets/location_icon.png";
-import jobIcon from "../../assets/bag_icon.png";
-import salaryIcon from "../../assets//salary_icon.png";
-import saveIcon from "../../assets//save_icon.png";
+import locationIcon from "../../../assets/location_icon.png";
+import jobIcon from "../../../assets/bag_icon.png";
+import salaryIcon from "../../../assets//salary_icon.png";
 import './JobCard.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

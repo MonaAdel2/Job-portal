@@ -10,7 +10,7 @@ function Home(){
     const [jobs, setJobs] = useState(null); // Stores fetched data
     useEffect (()  => {
         const fetchData = async () => {
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ2ODQ4NzgsImlzcyI6ImpvYkNvbm5lY3QifQ.ifB-YgPBNbqzm36kUvpbNldDXD28aka0tz_xzvUIpDc";
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ2ODYyMzUsImlzcyI6ImpvYkNvbm5lY3QifQ.JCuqCIzZTzbdHNO61aVqh4WbaekXdg04KtqewwY5oeA";
             try {
                 const url = "https://jobconnectapi-1.onrender.com/jobs/active"; // Replace with your API endpoint
                 const response = await fetch (url, {
@@ -21,8 +21,7 @@ function Home(){
                     }
                 });
                 const data = await response.json();
-                let jobSample = data[0];
-                console.log(`Job Sample is `, typeof(jobSample.salray))
+                console.log('data is ${data}')
                 setJobs (data);
             } catch (error) {
                 console.error("Error fetching data:", error);
