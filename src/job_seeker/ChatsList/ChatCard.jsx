@@ -6,10 +6,11 @@ function ChatCard(props){
             <div className="card-description">
                 <h3 className="card-title">{props.chatTitle}</h3>
                 <div className="card-text">
-                    
+                    <span>{props.lastMessage}</span>
                 </div>
             </div>
-            {/* <Button_card jobId={props.jobId}/> */}
+            
+            
             <button className="button"
             style={{marginRight: '30px'}}>
                 <Link to={`/job-seeker/chats/chat/${props.chatId}`}>View</Link>

@@ -9,7 +9,7 @@ import { adminRouter } from './AdminRouter.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App /> */}
-    {/* <RouterProvider router={router} /> */}
-    <RouterProvider router={adminRouter} />
+    <RouterProvider router={router} />
+    {/* <RouterProvider router={adminRouter} /> */}
   </React.StrictMode>,
 )
