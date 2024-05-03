@@ -22,8 +22,17 @@ function Chat() {
 
     const fetchPreviousMessages = async () => {
         try {
-            const response = await fetch(`YOUR_API_ENDPOINT/${chatId}/messages`);
-            if (!response.ok) {
+            const url =`http://localhost:5109/chat/${chatId}`
+
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ4NDk4NDcsImlzcyI6ImpvYkNvbm5lY3QifQ.lLCoEpvUk8Bo3TxNNJ007Mp0CqIjXjFpTZ9jD4Bi47Y";
+            // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json', // Adjust if your API requires headers
+                    'Authorization': `Bearer ${token}`
+                }
+            });            if (!response.ok) {
                 throw new Error('Failed to fetch previous messages');
             }
             const data = await response.json();
