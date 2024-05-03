@@ -59,7 +59,10 @@ function SearchResults() {
                     }
                 });
                 const data = await response.json();
-                console.log('data is ${data}')
+                let jobSample = data[0];
+                let date =  new Date(jobSample.postDate);
+                console.log(`job date is : ${date}`)
+
                 setFilteredJobs (data);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -94,6 +97,7 @@ function SearchResults() {
 
     const isDateInRange = (date, startDate, endDate) => {
         const jobDate = new Date(date);
+        console.log(`job date is : ${jobDate}`)
         return jobDate >= startDate && jobDate <= endDate;
     };
 
@@ -137,7 +141,8 @@ function SearchResults() {
             thisWeekStart.setDate(thisWeekStart.getDate() - thisWeekStart.getDay()); // Get the start of the week (Sunday)
             const thisWeekEnd = new Date(thisWeekStart);
             thisWeekEnd.setDate(thisWeekStart.getDate() + 6); // Get the end of the week (Saturday)
-            filtered = filtered.filter(job => isDateInRange(job.date, thisWeekStart, thisWeekEnd));
+
+            filtered = filtered.filter(job => isDateInRange(job.postDate, thisWeekStart, thisWeekEnd));
         } else if (dateFilter === 'This month') {
             // Filter jobs from this month
             const thisMonthStart = new Date();
@@ -145,12 +150,14 @@ function SearchResults() {
             const thisMonthEnd = new Date();
             thisMonthEnd.setMonth(thisMonthEnd.getMonth() + 1);
             thisMonthEnd.setDate(0); // Set to the last day of the month
-            filtered = filtered.filter(job => isDateInRange(job.date, thisMonthStart, thisMonthEnd));
+
+            filtered = filtered.filter(job => isDateInRange(job.postDate, thisMonthStart, thisMonthEnd));
         } else if (dateFilter === '2 months ago') {
             // Filter jobs from 2 months ago
             const twoMonthsAgo = new Date();
             twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
-            filtered = filtered.filter(job => isDateInRange(job.date, twoMonthsAgo, new Date()));
+
+            filtered = filtered.filter(job => isDateInRange(job.postDate, twoMonthsAgo, new Date()));
         }
 
         // Apply other filters if needed
