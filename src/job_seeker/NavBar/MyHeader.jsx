@@ -7,7 +7,7 @@ function MyHeader(){
         <nav className="nav-bar">
             {/* <a href="/" className="site-title">Job Portal</a> */}
             <span className="site-title">
-                <Link to={'/job-seeker/home'}>Job Portal</Link>
+                <Link to={'/job-seeker/home'}>JobConnect</Link>
             </span>
              <ul>
                 <li>

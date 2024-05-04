@@ -8,7 +8,7 @@ function AdminHeader(){
         <nav className="nav-bar">
             {/* <a href="/" className="site-title">Job Portal</a> */}
             <span className="site-title">
-                <Link to={'/admin/dashboard'}>Job Portal</Link>
+                <Link to={'/admin/dashboard'}>JobConnect</Link>
                 </span>
              <ul>
                 <li>
