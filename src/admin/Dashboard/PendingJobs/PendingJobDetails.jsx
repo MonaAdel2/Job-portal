@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import './PendingJobDetails.css'
 import AdminHeader from "../../AdminHeader";
 
 
-function JobDetailsAdmin() {
-    const detailssss = {
+function PendingJobDetails() {
+    
+    const detail = {
         jobId: 1,
         title: 'Item 1',
         employerName: 'Mona',
@@ -61,6 +62,7 @@ function JobDetailsAdmin() {
 
     const handleReject = async () => {
         try {
+            const navigate = useNavigate();
             const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ1MDQwNjksImlzcyI6ImpvYkNvbm5lY3QifQ.L-mU_o-CdQ76FT03uwda02u1uobdHaY0Pi3faxUJu5U";
 
             const url = `http://localhost:5109/jobs/${jobId}/reject`;
@@ -73,6 +75,7 @@ function JobDetailsAdmin() {
             });
             // Handle response accordingly
             console.log("Job rejected successfully!");
+            navigate("/admin/pendingJobs")
         } catch (error) {
             console.error("Error rejecting job:", error);
         }
@@ -84,7 +87,7 @@ function JobDetailsAdmin() {
 
             <AdminHeader/>
             <div style={{}}>
-                {details && (
+                 {details ? (
                     <>
                         <div className="job-title-details">
                             <h1>{details.jobTitle}</h1>
@@ -96,11 +99,9 @@ function JobDetailsAdmin() {
                                 <li><b>Job Type : </b> {details.jobType}</li>
                                 <li><b>Salary : </b> {`${details.salray}`}</li>
                                 <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                                <li className="job-description">
-                                    <b>Job description </b>
-                                    <p>{details.jobDescription}</p>
-                                </li>
+                                <li><b>Job description</b></li>
                             </ul>
+                            <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
                         </div>
                         <div className="btn-container">
                             <button className="button"
@@ -120,48 +121,44 @@ function JobDetailsAdmin() {
                         </div>
 
                     </>
-                )}
-            </div>
+            ) : (
+                <p style={{ textAlign: 'center' }}>No job details available.</p>
+            )}
+             </div>
+             {/* <div className="job-title-details">
+                            <h1>{detail.jobTitle}</h1>
+                        </div>
 
-            {/* <>
-            <div className="job-title-details">
-                <h1>{detailssss.title}</h1>
-            </div>
-            
-            <div>
-                <ul className="job-details">
-                    <li><b>Employer : </b> {detailssss.employerName}</li>
-                    <li><b>Job Type : </b> {detailssss.jobType}</li>
-                    <li><b>Salary : </b> {`${detailssss.salray}`}</li>
-                    <li><b>Date : </b> {new Date(detailsss.postDate).toLocaleDateString()}</li>
-                    <li className="job-description">
-                        <b>Job description </b>
-                        <p>{detailssss.jobDescription}</p>
-                    </li>
-                </ul>
-            </div>
-            <div className="btn-container">
-                    <button className="button" 
-                            style={{marginRight: '60px'}}
-                            onClick={handleAccept}>
-                            
-                        Accept</button>
-            </div>
-                    
-            <div className="btn-contanier2" >
-                        <button className="button" 
-                                style={{marginRight: '40px'}}
-                                onClick={handleReject}>
-                            Reject
-                    </button>
-            </div>
-                    
-        </> */}
+                        <div>
+                            <ul className="job-details">
+                                <li><b>Employer : </b> {detail.employerName}</li>
+                                <li><b>Job Type : </b> {detail.jobType}</li>
+                                <li><b>Salary : </b> {`${detail.salray}`}</li>
+                                <li><b>Date : </b> {new Date(detail.postDate).toLocaleDateString()}</li>
+                                <li><b>Job description</b></li>
+                            </ul>
+                            <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
+                        </div>
+                        <div className="btn-container">
+                            <button className="button"
+                                    style={{marginRight: '60px'}}
+                                    onClick={handleAccept}>
 
+                                Accept
+                            </button>
+                        </div>
+
+                        <div className="btn-contanier2">
+                            <button className="button"
+                                    style={{marginRight: '40px'}}
+                                    onClick={handleReject}>
+                                Reject
+                            </button>
+                        </div> */}
         </>
 
     );
 }
 
 
-export default JobDetailsAdmin
+export default PendingJobDetails

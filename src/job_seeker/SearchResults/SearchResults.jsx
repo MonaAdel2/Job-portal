@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Highlight: Added useNavigate
+import { useLocation, useNavigate } from 'react-router-dom'; 
 import SelectMenu from './SelectMenu.jsx'
 import './SearchResults.css'
 import JobCard from '../JobCard/JobCard.jsx'
@@ -9,26 +9,18 @@ import MyHeader from '../NavBar/MyHeader.jsx';
 
 
 function SearchResults() {
-    const locationList = ["Cairo", "Alex", "Giza"];
-    const jobTitleList = ["Junior", "Senior", "Lead"];
-    const jobTypeList = ["Full-time", "Part-time", "Freelance"];
-    const industryList = ["IT", "Development", "AI"];
-    const dateList = ["This week", "This month", "2 months ago", "3 months ago"];
-    const salaryRangeList = [">5,000 LE", "5,000-8,000 LE", "8,000-10,000 LE", "<10,000 LE"];
-
-
       const jobsList = [
-        { id: 1, jobTitle: 'Software Engineer', salary: '6000', jobType: 'Full-time', location: 'Cairo', industry: 'IT' },
-        { id: 2, jobTitle: 'Web Developer', salary: '5500', jobType: 'Full-time', location: 'Alex', industry: 'Development' },
-        { id: 2, jobTitle: 'Android Developer', salary: '10000', jobType: 'part-time', location: 'Alex', industry: 'Development' },
-        { id: 2, jobTitle: 'Analyst', salary: '7000', jobType: 'Full-time', location: 'Giza', industry: 'IT' },
+        { id: 1, jobTitle: 'Software Engineer', salray: '6000', jobType: 'Full-time', location: 'Cairo', industry: 'IT' },
+        { id: 2, jobTitle: 'Web Developer', salray: '5500', jobType: 'Full-time', location: 'Alex', industry: 'Development' },
+        { id: 2, jobTitle: 'Android Developer', salray: '10000', jobType: 'part-time', location: 'Alex', industry: 'Development' },
+        { id: 2, jobTitle: 'Analyst', salray: '7000', jobType: 'Full-time', location: 'Giza', industry: 'IT' },
         // Add more job objects as needed
     ];
 
-    // const [jobs, setJobs] = useState([]);
-    // const [filteredJobs, setFilteredJobs] = useState([]);
 
-    const [filteredJobs, setFilteredJobs] = useState([]);
+    const [filteredJobs, setFilteredJobs] = useState([]); // assigned to the map function
+    const [returnedJobs, setReturedJobs] = useState([]);
+
     const [locationFilter, setLocationFilter] = useState('');
     const [industryFilter, setIndustryFilter] = useState('');
     const [jobTitleFilter, setJobTitleFilter] = useState('');
@@ -65,6 +57,7 @@ function SearchResults() {
                 console.log(`job date is : ${date}`)
 
                 setFilteredJobs (data);
+                setReturedJobs (data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -104,7 +97,8 @@ function SearchResults() {
 
 
     useEffect(() => {
-        let filtered = filteredJobs;
+        let filtered = returnedJobs;
+        // let filtered = jobsList
 
         // location filter
         if (locationFilter !== '') {
@@ -161,10 +155,9 @@ function SearchResults() {
             filtered = filtered.filter(job => isDateInRange(job.postDate, twoMonthsAgo, new Date()));
         }
 
-        // Apply other filters if needed
-
         // Update the filtered list of jobs
         setFilteredJobs(filtered);
+
     }, [locationFilter, industryFilter, jobTitleFilter, jobTypeFilter, salaryFilter, dateFilter]);
 
 
@@ -215,6 +208,7 @@ function SearchResults() {
                     </select>
                 </div>
                 <div>
+                    {filteredJobs.length !== 0 ? (
                     <ul className='jobs-list' style={{ listStyle: 'none', padding: '0', margin: '0' }}>
                         {filteredJobs.map((job, index) => (
                             <li style={{ textDecoration: 'none' }} key={index}>
@@ -226,6 +220,9 @@ function SearchResults() {
                             </li>
                         ))}
                     </ul>
+                ) : (
+                    <p style={{ textAlign: 'center' }}>No jobs found.</p>
+                    )}
                 </div>
             </div>
             <ToastContainer />

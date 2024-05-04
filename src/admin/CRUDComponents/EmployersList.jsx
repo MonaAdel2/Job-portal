@@ -133,8 +133,9 @@ function EmployersList() {
                     </button>}
                 </div>
             </Modal>
+            {employers && employers.length > 0 ? (
             <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                {employersList.map(employer => (
+                {employers.map(employer => (
                     <li key={employer.id}>
                         <EmployerCard
                             name={employer.userName}
@@ -146,6 +147,10 @@ function EmployersList() {
                     </li>
                 ))}
             </ul>
+            ) : (
+                <p style={{ textAlign: 'center' }}>No employers available.</p>
+            )}
+
         </>
     );
 }

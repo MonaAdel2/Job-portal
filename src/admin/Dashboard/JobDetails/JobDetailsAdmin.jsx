@@ -6,7 +6,8 @@ import AdminHeader from "../../AdminHeader";
 
  
 function JobDetailsAdmin(){
-    const detailssss = { 
+
+    const detail = { 
         jobId: 1, 
         title: 'Item 1',
         employerName: 'Mona',
@@ -83,62 +84,47 @@ function JobDetailsAdmin(){
 
         <AdminHeader/>
         <div style={{}}>
-            {details && (
-                <>
-                    <div className="job-title-details">
-                        <h1>{details.jobTitle}</h1>
-                    </div>
-                    
-                    <div>
-                        <ul className="job-details">
-                            <li><b>Employer : </b> {details.employer.userName}</li>
-                            <li><b>Job Type : </b> {details.jobType}</li>
-                            <li><b>Salary : </b> {`${details.salray}`}</li>
-                            <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                            <li className="job-description">
-                                <b>Job description </b>
-                                <p>{details.jobDescription}</p>
-                            </li>
-                        </ul>
-                    </div>
-                    {/* <div className="btn-container">
-                            <button className="button" 
-                                    style={{marginRight: '60px'}}
-                                    onClick={handleAccept}>
-                                    
-                                Accept</button>
-                    </div>
-                         
-                    <div className="btn-contanier2" >
-                             <button className="button" 
-                                     style={{marginRight: '40px'}}
-                                     onClick={handleReject}>
-                                   Reject
-                            </button>
-                    </div> */}
-                    
-                </>
-            )}
-        </div>
-        
-        {/* <>
+        {details ? (
+        <>
             <div className="job-title-details">
-                <h1>{detailssss.title}</h1>
+                <h1>{details.jobTitle}</h1>
             </div>
             
             <div>
                 <ul className="job-details">
-                    <li><b>Employer : </b> {detailssss.employerName}</li>
-                    <li><b>Job Type : </b> {detailssss.jobType}</li>
-                    <li><b>Salary : </b> {`${detailssss.salray}`}</li>
-                    <li><b>Date : </b> {new Date(detailsss.postDate).toLocaleDateString()}</li>
+                    <li><b>Employer : </b> {details.employer.userName}</li>
+                    <li><b>Job Type : </b> {details.jobType}</li>
+                    <li><b>Salary : </b> {`${details.salray}`}</li>
+                    <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
+                    <li><b>Job description</b></li>
+                </ul>
+                <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
+            </div>
+        </>
+         ) : (
+        <p style={{textAlign: "center"}}>No job details available.</p>
+        )}
+
+        </div>
+        
+        <>
+            {/* <div className="job-title-details">
+                <h1>{detail.title}</h1>
+            </div>
+            
+            <div>
+                <ul className="job-details">
+                    <li><b>Employer : </b> {detail.employerName}</li>
+                    <li><b>Job Type : </b> {detail.jobType}</li>
+                    <li><b>Salary : </b> {`${detail.salray}`}</li>
+                    <li><b>Date : </b> {new Date(detail.postDate).toLocaleDateString()}</li>
                     <li className="job-description">
                         <b>Job description </b>
-                        <p>{detailssss.jobDescription}</p>
+                        <p>{detail.jobDescription}</p>
                     </li>
                 </ul>
-            </div>
-            <div className="btn-container">
+            </div> */}
+            {/* <div className="btn-container">
                     <button className="button" 
                             style={{marginRight: '60px'}}
                             onClick={handleAccept}>
@@ -152,9 +138,9 @@ function JobDetailsAdmin(){
                                 onClick={handleReject}>
                             Reject
                     </button>
-            </div>
+            </div> */}
                     
-        </> */}
+        </>
         
         </>
         

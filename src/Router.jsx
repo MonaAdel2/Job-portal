@@ -18,6 +18,7 @@ import ChatsList from './job_seeker/ChatsList/ChatsList.jsx';
 import JobDetailsAdmin from './admin/Dashboard/JobDetails/JobDetailsAdmin.jsx';
 import DashboardAdmin from './admin/Dashboard/DashboardAdmin.jsx';
 import PendingJobs from './admin/Dashboard/PendingJobs/PendingJobs.jsx';
+import PendingJobDetails from './admin/Dashboard/PendingJobs/PendingJobDetails.jsx';
 import ReadEmployerDetails from './admin/CRUDComponents/EmployerDetails/ReadEmployerDetails.jsx';
 import EmployersList from './admin/CRUDComponents/EmployersList.jsx';
 
@@ -134,6 +135,10 @@ export const Router = createBrowserRouter([
       {
         path: '/admin/pendingJobs',
         element: <PendingJobs />,
+      },
+      {
+        path: '/admin/pendingJobs/jobDetails',
+        element: <PendingJobDetails />,
       },
       {
         path: '/admin/employerDetails/:employerId',

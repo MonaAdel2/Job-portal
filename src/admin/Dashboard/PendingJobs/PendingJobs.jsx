@@ -35,25 +35,25 @@ function PendingJobs(){
     return(
         <>
             <AdminHeader/>
-            {jobs && (
-                <>
-                    <h2 style={{ marginLeft: '20px' }}>Pending Jobs</h2>
-                    
-                    <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                        {jobs.map(job => (
-                            <li style={{textDecoration: 'none'}}>
-                                <JobCard 
-                                        flag="p"
-                                        title={job.jobTitle}
-                                        // location={job.location}
-                                        salary={`${job.salray}`}
-                                        type={job.jobType}
-                                        jobId={job.jobId}/>
-                            </li>
-                        ))}
-                    </ul>
-                </>
+            <h2 style={{ marginLeft: '20px' }}>Pending Jobs</h2>
+            {jobs && jobs.length > 0 ? (
+            <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
+                {jobs.map(job => (
+                    <li key={job.jobId} style={{textDecoration: 'none'}}>
+                        <JobCard 
+                                flag="p"
+                                title={job.jobTitle}
+                                // location={job.location}
+                                salary={`${job.salray}`}
+                                type={job.jobType}
+                                jobId={job.jobId}/>
+                    </li>
+                ))}
+            </ul>
+             ) : (
+            <p style={{ textAlign: 'center' }}>No pending jobs available.</p>
             )}
+
         </>
     );
 }

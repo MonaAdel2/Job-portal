@@ -22,7 +22,9 @@ function MyHeader(){
                     <Link to={'/job-seeker/chats'}>Chats</Link>
                 </li>
                 
-                <li>Logout</li>
+                <li>
+                    <Link to={"/login"}>Logout</Link>
+                </li>
             </ul>
         </nav>
        

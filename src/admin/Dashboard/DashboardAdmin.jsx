@@ -46,53 +46,56 @@ function DashboardAdmin(){
     return(
         <>
 
-                {/* <>
+                <AdminHeader/>
+                <>
                     <h2 style={{ marginLeft: '20px' }}>Jobs</h2>
-                    <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
+                    {/* <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                         {jobsList.map(job => (
                             <li style={{textDecoration: 'none'}}>
                                 <JobCard 
+                                        flag="j"
                                         title={job.title}
-                                        // location={job.location}
+                                        location={job.location}
                                         salary={`${job.salray}`}
                                         type={job.jobType}
                                         jobId={`${job.jobId}`}/>
                                
                             </li>
                         ))}
-                    </ul>
-                    <ToastContainer />
-                </> */}
-            <AdminHeader/>
-            
-            {jobs && (
-                <>
-                    <div>
-                        <div>
-                            <button className="button" style={{marginRight: '10px'}}>
-                                <Link to={'/admin/pendingJobs/'}>Pending Jobs</Link>
-                            </button>
-                        </div>
-                        <h2 style={{ marginLeft: '20px' }}>Posted Jobs</h2>
-                    </div>
-                   
-                    
-                    <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                        {jobs.map(job => (
-                            <li style={{textDecoration: 'none'}}>
-                                <JobCard 
-                                        flag="j"
-                                        title={job.jobTitle}
-                                        // location={job.location}
-                                        salary={`${job.salray}`}
-                                        type={job.jobType}
-                                        jobId={job.jobId}/>
-                               
-                            </li>
-                        ))}
-                    </ul>
+                    </ul> */}
                 </>
-            )}
+            
+            
+            <div>
+                    <div>
+                        <button className="button" style={{marginRight: '10px'}}>
+                            <Link to={'/admin/pendingJobs/'}>Pending Jobs</Link>
+                        </button>
+                    </div>
+                    <h2 style={{ marginLeft: '20px' }}>Posted Jobs</h2>
+            </div>
+
+            {jobs && jobs.length > 0 ? (
+            <>
+                <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
+                    {jobs.map(job => (
+                        <li key={job.jobId} style={{textDecoration: 'none'}}>
+                            <JobCard 
+                                    flag="j"
+                                    title={job.jobTitle}
+                                    // location={job.location}
+                                    salary={`${job.salray}`}
+                                    type={job.jobType}
+                                    jobId={job.jobId}/>
+                            
+                        </li>
+                    ))}
+                </ul>
+            </>
+        ) : (
+            <p style={{ textAlign: 'center' }}>No posted jobs available.</p>
+        )}
+
         </>
     );
 }

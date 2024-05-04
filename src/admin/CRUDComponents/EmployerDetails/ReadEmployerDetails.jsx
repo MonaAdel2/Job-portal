@@ -8,6 +8,14 @@ import AdminHeader from "../../AdminHeader";
 function ReadEmployerDetails() {
     const { employerId } = useParams();
 
+    const dummyData ={
+        "id": "1",
+        "email": "mona@gmail,com",
+        "company": "Google",
+        "industry": "Development",
+        "userName": "Mona Adel",
+    }
+
     const [details, setEmployerDetails] = useState(null);
 
     useEffect(() => {
@@ -42,7 +50,7 @@ function ReadEmployerDetails() {
 
     const [open, setOpen] = useState(false);
     const [action, setAction] = useState('Update');
-    const [user, setUser] = useState(blankUser);
+    const [user, setUser] = useState(details); // set the initial state to the employer's data
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
@@ -91,26 +99,68 @@ function ReadEmployerDetails() {
     return (
         <>
             <AdminHeader/>
-            {details && (
-                <>
-                    <div className="employer-name">
-                        <h1>Name: {details.userName}</h1>
+            {details ? (
+            <>
+                <div className="employer-name">
+                    <h1>Name: {details.userName}</h1>
+                </div>
+
+                <div>
+                    <ul className="employer-details">
+                        <li><b>Employer ID: </b> {details.id}</li>
+                        <li><b>Email: </b> {details.email}</li>
+                        <li><b>Company: </b> {details.company}</li>
+                        <li><b>Industry: </b> {details.industry}</li>
+                    </ul>
+                </div>
+
+                <div className="btn-container">
+                    <button className="button" onClick={deleteUser}>Delete</button>
+                </div>
+
+                <div className="btn-container2">
+                    <button className="button" onClick={onOpenModal}>Update</button>
+                </div>
+
+                <Modal open={open} onClose={onCloseModal} center>
+                    <h2>{action} Employer</h2>
+                    <div className='form'>
+                        <label htmlFor="">User Name</label>
+                        <input type="text" value={user.UserName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
+                        <label htmlFor="">Email</label>
+                        <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
+                        <label htmlFor="">Password</label>
+                        <input type="text" value={user.password} onChange={(e) => setUser({ ...user, "Password": e.target.value })} />
+                        <label htmlFor="">Company</label>
+                        <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
+                        <label htmlFor="">Industry</label>
+                        <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
+                        <button className='button' style={{ position: 'relative', marginTop: '10px' }} onClick={updateUser}>Update</button>
+                    </div>
+                </Modal>
+            </>
+             ) : (
+            <p style={{ textAlign: 'center' }}>No details available. Please try again later</p>
+        )}
+
+            {/* <div className="employer-name">
+                        <h1>Name: {dummyData.userName}</h1>
                     </div>
 
                     <div>
                         <ul className="employer-details">
-                            <li><b>Employer ID: </b> {details.id}</li>
-                            <li><b>Email: </b> {details.email}</li>
-                            <li><b>Company: </b> {details.company}</li>
-                            <li><b>Industry: </b> {details.industry}</li>
+                            <li><b>Employer ID: </b> {dummyData.id}</li>
+                            <li><b>Email: </b> {dummyData.email}</li>
+                            <li><b>Company: </b> {dummyData.company}</li>
+                            <li><b>Industry: </b> {dummyData.industry}</li>
                         </ul>
                     </div>
 
-                    <div className="btn-container">
+                    <div className="btn-container2">
                         <button className="button" onClick={deleteUser}>Delete</button>
                     </div>
 
-                    <div className="btn-container2">
+                    <div className="btn-container">
                         <button className="button" onClick={onOpenModal}>Update</button>
                     </div>
 
@@ -118,7 +168,7 @@ function ReadEmployerDetails() {
                         <h2>{action} Employer</h2>
                         <div className='form'>
                             <label htmlFor="">User Name</label>
-                            <input type="text" value={user.UserName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
+                            <input type="text" value={user.userName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
                             <label htmlFor="">Email</label>
                             <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
                             <label htmlFor="">Password</label>
@@ -129,9 +179,7 @@ function ReadEmployerDetails() {
                             <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
                             <button className='button' style={{ position: 'relative', marginTop: '10px' }} onClick={updateUser}>Update</button>
                         </div>
-                    </Modal>
-                </>
-            )}
+                    </Modal> */}
         </>
     );
 }

@@ -21,7 +21,9 @@ function AdminHeader(){
 
                 
                 
-                <li>Logout</li>
+                <li>
+                    <Link to={"/login"}>Logout</Link>
+                </li>
             </ul>
         </nav>
        

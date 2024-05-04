@@ -20,7 +20,7 @@ function JobCard(props){
                     <ElementWithIcon label={props.salray} icon={salaryIcon} />
                 </div>
             </div>
-            <Button_card jobId={props.jobId} key={props.flag}/>
+            <Button_card jobId={props.jobId} flag={props.flag}/>
 
 
         </div>

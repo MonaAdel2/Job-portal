@@ -47,7 +47,7 @@ import NavGraph from '../NavGraph/NavGraph';
             </div>
           <div className='job-type-div'>
                 <label className='job-type-label'>Job Type</label>
-                <select id="job-type-input" value={jobType} onChange={(e)=> setJobType(e.target.value)}>
+                <select className="select" id="job-type-input" value={jobType} onChange={(e)=> setJobType(e.target.value)}>
                 <option value="">Select</option>
                 <option value="contract">Contract</option>
                 <option value="fulltime">Full-time</option>
@@ -65,7 +65,10 @@ import NavGraph from '../NavGraph/NavGraph';
             <label className='job-description-label'>Job description</label>
             <textarea className='job-description-input' value={jobDescription} type='text' onChange={(e)=> setjobDescription(e.target.value)}></textarea>
             </div>
-            <button className='post-job-button' onClick={handleSubmit}>Post a job</button> 
+            <div className='post-button-contanier'>
+               <button className='post-job-button' onClick={handleSubmit}>Post a job</button> 
+            </div>
+            
         </div>
      </div>
     </div>
