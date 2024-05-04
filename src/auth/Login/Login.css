@@ -11,7 +11,7 @@
 }
 .login-form-container{
     background-color: white;
-    height: 70ch;
+    height: 65ch;
     width: 70ch;
     display: flex;
     flex-direction: column;
@@ -49,7 +49,7 @@ input{
     font-size: 16px;
     padding: 15px 28px;
     border-radius: 12px;
-    border: none;
+    border: #6236F5; 
     color: white;  
     margin-top: 5ch;
     margin-left: 5ch;
@@ -57,6 +57,7 @@ input{
     font-family:'Trebuchet MS', sans-serif ;
     font-size: large;
     font-weight: lighter;
+    position: unset;
 }
 .login-button:hover{
     background-color: rgba(77, 23, 255, 0.623);
@@ -88,8 +89,16 @@ input{
 }
 .email-label{
     color: black;
-     text-align: left;
+    text-align: left;
     margin-left: 6ch;
+    margin-bottom: 1ch;
+    font-family: 'Trebuchet MS', sans-serif ;
+    font-size: 20px;
+}
+.role-label{
+    color: black;
+    text-align: left;
+    margin-left: 5ch;
     margin-bottom: 1ch;
     font-family: 'Trebuchet MS', sans-serif ;
     font-size: 20px;
@@ -118,4 +127,33 @@ input{
     margin-right: auto;
     display: flex;
     justify-content: center;
+}
+
+
+.select-role-label{
+    margin-left: 50px;
+    font-size: 18px;
+}
+.job-role-menu2 {
+    width: 150px; /* Set the width of the menu */
+    padding: 2px; /* Add padding */
+    font-size: 16px; /* Set the font size */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add border radius */
+    background-color: #fff; /* Set background color */
+    margin-left: 5.5ch;
+    margin-top: 2px;
+}
+.to-register-message {
+    font-size: 14px;
+    margin-top: 3ch;
+    margin-bottom: 3ch;
+    text-align: center;
+    
+}
+
+.to-register-link {
+    color: #338573;
+    text-decoration: underline;
+    cursor: pointer;
 }

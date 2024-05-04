@@ -29,7 +29,9 @@ function  Login(props) {
             <input class="email-input"value={email} type="email" placeholder="youremail@gmail.com" id="email" name="email" onChange={(e) => setEmail(e.target.value)}></input>
             <label className="password-label" htmlFor="password">Password</label>
             <input class="password-input" value={password} type="password"  id="password" name="password" onChange={(e) => setPassword(e.target.value)}></input>
-            <select  value={jobRole} onChange={(e)=> setJobRole(e.target.value)}>
+
+            <label className='role-label'>Select Role:</label>
+            <select className="job-role-menu2" value={jobRole} onChange={(e)=> setJobRole(e.target.value)}>
                 <option value="">Select</option>
                 <option value="admin">Admin</option>
                 <option value="jobseeker">Jobseeker</option>
@@ -38,7 +40,10 @@ function  Login(props) {
             <button className="login-button" type="submit">Login</button>
             
         </form>
-        <Link to="/register"><button className="to-register-button" >Don't Have an accout? Register </button></Link> 
+
+        <span className="to-register-messagae" style={{marginTop: "3ch", textAlign:'center'}}>Don't Have an accout? <Link to="/register" className="to-register-link">Register</Link></span>
+        
+        {/* <Link to="/register"><button className="to-register-button" >Don't Have an accout? Register </button></Link>  */}
         </div>
         </div>
     );
