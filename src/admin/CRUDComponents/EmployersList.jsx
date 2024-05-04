@@ -1,35 +1,37 @@
 import EmployerCard from "./EmployerCard/EmployerCard";
-import { PlusCircle, Edit, Trash2 } from 'react-feather';
-import { Modal } from 'react-responsive-modal';
-import React, { useState, useEffect } from 'react';
+import {PlusCircle, Edit, Trash2} from 'react-feather';
+import {Modal} from 'react-responsive-modal';
+import React, {useState, useEffect} from 'react';
 
-function EmployersList(){
+function EmployersList() {
 
     const employersList = [
-        { employerId: 1, name: 'Item 1', email: 'email', company: 'company', industry:'industry' },
-        { employerId: 2, name: 'Item 1', email: 'email', company: 'company', industry:'industry' },
-        { employerId: 3, name: 'Item 1', email: 'email', company: 'company', industry:'industry' },
-        { employerId: 4, name: 'Item 1', email: 'email', company: 'company', industry:'industry' },
-        { employerId: 5, name: 'Item 1', email: 'email', company: 'company', industry:'industry' },
+        {employerId: 1, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {employerId: 2, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {employerId: 3, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {employerId: 4, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {employerId: 5, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
     ];
 
     const [open, setOpen] = useState(false);
     const [action, setAction] = useState('Add');
-    const [userdata, SetEmployerrData] = useState([]);
+    const [employers, setEmployersData] = useState([]);
     const [user, SetEmployer] = useState({
-        "employerId": "",
-        "name": "",
-        "email": "",
-        "company": "",
-        "industry": "",
+        "Email": "",
+        "Password": "",
+        "Company": "",
+        "Industry": "",
+        "UserName": "",
+        'Role': "Employer"
     });
 
     const blankuser = {
-        "employerId": "",
-        "name": "",
+        "UserName": "",
         "email": "",
+        "Password": "",
         "company": "",
         "industry": "",
+        'Role': "Employer"
     };
 
     useEffect(() => {
@@ -37,10 +39,19 @@ function EmployersList(){
     }, []);
 
     const fetchEmployersList = async () => {
+        const url = `http://localhost:5109/admin/employers`
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODY0ODY1LCJpc3MiOiJqb2JDb25uZWN0In0.vzVBXIsmWusscfHhk0lGX54TKdvUHfYnwUfgcu6bebw"
         try {
-            const response = await fetch('http://your-api-endpoint.com/employers');
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             const data = await response.json();
-            SetEmployerrData(data);
+            setEmployersData(data);
+            console.log(`user data is ${employers}`)
         } catch (error) {
             console.error('Error fetching employers list:', error);
         }
@@ -48,16 +59,20 @@ function EmployersList(){
 
     const addNewEmployer = async () => {
         try {
-            const response = await fetch('http://your-api-endpoint.com/employers', {
+            const url = `http://localhost:5109/admin/employers`
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODY0ODY1LCJpc3MiOiJqb2JDb25uZWN0In0.vzVBXIsmWusscfHhk0lGX54TKdvUHfYnwUfgcu6bebw"
+
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(user)
             });
             const data = await response.json();
-            SetEmployerrData([...userdata, data]);
-            SetEmployer(blankuser);
+            setEmployersData([...employers, data]);
+            SetEmployer(user);
             onCloseModal(); // Close the modal after adding the new employer
         } catch (error) {
             console.error('Error adding new employer:', error);
@@ -70,44 +85,51 @@ function EmployersList(){
         setAction('Add')
     };
 
-    return(
+    return (
         <>
-        <div className="add-btn-contanier">
-                <button onClick={onOpenModal} style={{marginTop: '25px', display:'flex', position:'absolute', right:'2%'}}>
+            <div className="add-btn-contanier">
+                <button onClick={onOpenModal}
+                        style={{marginTop: '25px', display: 'flex', position: 'absolute', right: '2%'}}>
                     <PlusCircle size={16}></PlusCircle>
                     <span> Add Employer</span>
-                    </button>
-        </div>
-            <h2 style={{ marginLeft: '20px' }}>Employers</h2>
-            
+                </button>
+            </div>
+            <h2 style={{marginLeft: '20px'}}>Employers</h2>
+
 
             <Modal open={open} onClose={onCloseModal} center>
                 <h2>{action} User</h2>
                 <div className='form'>
-                <label htmlFor="">Id</label>
-                    <input type="text" required value={user.employerId} onChange={(e) => SetEmployer({...user,"employerId":e.target.value})} />
-                    <label htmlFor="">Name</label>
-                    <input type="text" required value={user.name} onChange={(e) => SetEmployer({...user,"name":e.target.value})} />
+                    <label htmlFor="">User Name</label>
+
+                    <input type="text" required value={user.UserName}
+                           onChange={(e) => SetEmployer({...user, "UserName": e.target.value})}/>
                     <label htmlFor="">Email</label>
-                    <input type="text" required value={user.email} onChange={(e) => SetEmployer({...user,"email":e.target.value})} />
+                    <input type="text" required value={user.email}
+                           onChange={(e) => SetEmployer({...user, "Email": e.target.value})}/>
+                    <label htmlFor="">Password</label>
+                    <input type="text" required value={user.Password}
+                           onChange={(e) => SetEmployer({...user, "Password": e.target.value})}/>
                     <label htmlFor="">Company</label>
-                    <input type="text" required value={user.company} onChange={(e) => SetEmployer({...user,"company":e.target.value})} />
+                    <input type="text" required value={user.company}
+                           onChange={(e) => SetEmployer({...user, "Company": e.target.value})}/>
                     <label htmlFor="">Industry</label>
-                    <input type="text" required value={user.industry} onChange={(e) => SetEmployer({...user,"industry":e.target.value})} />
-                   
-                    {action === 'Add' && <button className='button' style={{position:'relative', marginTop: '10px'}}
-                                                onClick={() => addNewEmployer()}
-                                                >
-                                                Submit
-                                        </button>}
+                    <input type="text" required value={user.industry}
+                           onChange={(e) => SetEmployer({...user, "Industry": e.target.value})}/>
+
+                    {action === 'Add' && <button className='button' style={{position: 'relative', marginTop: '10px'}}
+                                                 onClick={() => addNewEmployer()}
+                    >
+                        Submit
+                    </button>}
                 </div>
             </Modal>
             <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                {employersList.map(employer => (
-                    <li key={employer.employerId}>
-                        <EmployerCard 
-                            name={employer.name} 
-                            employerId={employer.employerId}
+                {employers.map(employer => (
+                    <li key={employer.id}>
+                        <EmployerCard
+                            name={employer.userName}
+                            employerId={employer.id}
                             email={employer.email}
                             company={employer.company}
                             industry={employer.industry}

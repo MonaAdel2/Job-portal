@@ -95,7 +95,7 @@ function Chat() {
                 }}>
                 {messages.map((message, index) => (
                     <div key={index} style={{ padding: '5px' }}>
-                        <b>"Sender"</b> <span>{message.content}</span>{' '}
+                        <b>{chat.jobSeeker.userName}</b> <span>{message.content}</span>{' '}
                         <span style={{ fontSize: 'small' }}> ({message.sentDate})</span>
                     </div>
                 ))}

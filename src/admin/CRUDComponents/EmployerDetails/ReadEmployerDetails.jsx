@@ -11,12 +11,14 @@ function ReadEmployerDetails() {
 
     useEffect(() => {
         const fetchData = async () => {
+            const url = `http://localhost:5109/admin/employers/${employerId}`
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODY0ODY1LCJpc3MiOiJqb2JDb25uZWN0In0.vzVBXIsmWusscfHhk0lGX54TKdvUHfYnwUfgcu6bebw"
             try {
-                const url = `http://your-api-endpoint.com/employers/${employerId}`;
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization' : `Bearer ${token}`
                     }
                 });
                 const data = await response.json();
@@ -29,11 +31,12 @@ function ReadEmployerDetails() {
     }, [employerId]);
 
     const blankUser = {
-      "employerId": "",
-      "name": "",
-      "email": "",
-      "company": "",
-      "industry": "",
+        "Email": "",
+        "Password": "",
+        "Company": "",
+        "Industry": "",
+        "UserName": "",
+        'Role': "Employer"
     };
 
     const [open, setOpen] = useState(false);
@@ -48,10 +51,14 @@ function ReadEmployerDetails() {
 
     const updateUser = async () => {
         try {
-            const response = await fetch(`http://your-api-endpoint.com/employers/${employerId}`, {
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODY0ODY1LCJpc3MiOiJqb2JDb25uZWN0In0.vzVBXIsmWusscfHhk0lGX54TKdvUHfYnwUfgcu6bebw"
+
+            const response = await fetch(`http://localhost:5109/admin/employers/${employerId}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization' : `Bearer ${token}`
+
                 },
                 body: JSON.stringify(user)
             });
@@ -65,8 +72,14 @@ function ReadEmployerDetails() {
 
     const deleteUser = async () => {
         try {
-            await fetch(`http://your-api-endpoint.com/employers/${employerId}`, {
-                method: 'DELETE'
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODY0ODY1LCJpc3MiOiJqb2JDb25uZWN0In0.vzVBXIsmWusscfHhk0lGX54TKdvUHfYnwUfgcu6bebw"
+            const url = `http://localhost:5109/admin/employers/${employerId}`
+
+            await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
             });
             // Handle success accordingly, maybe redirect to another page
         } catch (error) {
@@ -79,12 +92,12 @@ function ReadEmployerDetails() {
             {details && (
                 <>
                     <div className="employer-name">
-                        <h1>Name: {details.name}</h1>
+                        <h1>Name: {details.userName}</h1>
                     </div>
 
                     <div>
                         <ul className="employer-details">
-                            <li><b>Employer ID: </b> {details.employerId}</li>
+                            <li><b>Employer ID: </b> {details.id}</li>
                             <li><b>Email: </b> {details.email}</li>
                             <li><b>Company: </b> {details.company}</li>
                             <li><b>Industry: </b> {details.industry}</li>
@@ -102,16 +115,16 @@ function ReadEmployerDetails() {
                     <Modal open={open} onClose={onCloseModal} center>
                         <h2>{action} Employer</h2>
                         <div className='form'>
-                            <label htmlFor="">ID</label>
-                            <input type="text" value={user.employerId} onChange={(e) => setUser({ ...user, "employerId": e.target.value })} />
-                            <label htmlFor="">Name</label>
-                            <input type="text" value={user.name} onChange={(e) => setUser({ ...user, "name": e.target.value })} />
+                            <label htmlFor="">User Name</label>
+                            <input type="text" value={user.UserName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
                             <label htmlFor="">Email</label>
-                            <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "email": e.target.value })} />
+                            <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
+                            <label htmlFor="">Password</label>
+                            <input type="text" value={user.password} onChange={(e) => setUser({ ...user, "Password": e.target.value })} />
                             <label htmlFor="">Company</label>
-                            <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "company": e.target.value })} />
+                            <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
                             <label htmlFor="">Industry</label>
-                            <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "industry": e.target.value })} />
+                            <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
                             <button className='button' style={{ position: 'relative', marginTop: '10px' }} onClick={updateUser}>Update</button>
                         </div>
                     </Modal>
