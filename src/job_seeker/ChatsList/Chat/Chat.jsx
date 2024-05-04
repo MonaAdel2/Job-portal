@@ -56,7 +56,7 @@ function Chat() {
 
         const newMessage = {
             content : inputMessage,
-            sentDate: new Date().toLocaleTimeString(),
+            sentDate: new Date(),
             senderName: chat.jobSeeker.userName,
             recipientName: chat.employer.userName,
             chatId: chat.id// You can adjust the sender as needed
@@ -101,7 +101,7 @@ function Chat() {
                 {messages.map((message, index) => (
                     <div key={index} style={{ padding: '5px' }}>
                         <b>{message.senderName} : </b> <span>{message.content}</span>{' '}
-                        <span style={{ fontSize: 'small' }}> ({message.sentDate})</span>
+                        <span style={{ fontSize: 'small' }}>({new Date(message.sentDate).toLocaleTimeString()})</span>
                     </div>
                 ))}
             </div>

@@ -28,15 +28,6 @@ function EmployersList() {
 
     const [isFormValid, setIsFormValid] = useState(false);
 
-    const blankuser = {
-        "UserName": "",
-        "email": "",
-        "Password": "",
-        "company": "",
-        "industry": "",
-        'Role': "Employer"
-    };
-
     useEffect(() => {
         fetchEmployersList();
     }, []);
