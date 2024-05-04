@@ -39,7 +39,7 @@ function JobDetails(){
     return (
         <div style={{}}>
             <MyHeader/>
-            {details && (
+            {details ? (
                 <>
                     <div className="job-title-details">
                         <h1>{details.jobTitle}</h1>
@@ -64,7 +64,10 @@ function JobDetails(){
                         </button>
                     </div>
                 </>
+            ) : (
+                <p style={{textAlign: 'center', fontSize: "large"}}>No details available for this job.</p>
             )}
+
         </div>
     );
 }

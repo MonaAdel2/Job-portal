@@ -35,29 +35,34 @@ function SavedJobs(){
     return(
         <>
             <MyHeader/>
-            {jobs && (
+
+            <h2 style={{ marginLeft: '20px' }}>Saved Jobs</h2>
+            {jobs && jobs.length > 0 ? (
                 <>
                     <div>
-                        <h2 style={{marginLeft: '20px'}}>Saved Jobs</h2>
+                        
                         <div>
-                            <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                                        {jobs.map(job => (
-                                            <li style={{textDecoration: 'none'}}>
-                                                <SavedJobCard
-                                                        title={job.jobTitle}
-                                                        id = {job.jobId}
-                                                        // location={job.location}
-                                                        salary={job.salray}
-                                                        type={job.jobType}/>
-                                            
-                                            </li>
-                                        ))}
+                            <ul className='jobs-list' style={{ listStyle: 'none', padding: '0', margin: '0' }}>
+                                {jobs.map(job => (
+                                    <li key={job.jobId} style={{ textDecoration: 'none' }}>
+                                        <SavedJobCard
+                                            title={job.jobTitle}
+                                            id={job.jobId}
+                                            // location={job.location}
+                                            salary={job.salray}
+                                            type={job.jobType}
+                                        />
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <ToastContainer />
                     </div>
                 </>
+            ) : (
+                <p style={{textAlign: "center" , fontSize: 'large'}}>No saved jobs available.</p>
             )}
+
         </>
 
        

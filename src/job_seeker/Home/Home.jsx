@@ -43,6 +43,8 @@ function Home(){
         <>
 
         <MyHeader/>
+        <WelcomeMessage />
+        <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
 
                 {/* <>
                     <WelcomeMessage/>
@@ -63,25 +65,26 @@ function Home(){
                     <ToastContainer />
                 </> */}
 
-            {jobs && (
+            {jobs && jobs.length > 0 ? (
                 <>
-                    <WelcomeMessage/>
-                    <h2 style={{ marginLeft: '20px' }}>Available Jobs</h2>
+                    
                     <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                         {jobs.map(job => (
-                            <li style={{textDecoration: 'none'}}>
+                            <li key={job.jobId} style={{textDecoration: 'none'}}>
                                 <JobCard 
-                                        title={job.jobTitle}
-                                        // location={job.location}
-                                        salary={`${job.salray}`}
-                                        type={job.jobType}
-                                        jobId={job.jobId}/>
-                               
+                                    title={job.jobTitle}
+                                    // location={job.location}
+                                    salary={`${job.salray}`}
+                                    type={job.jobType}
+                                    jobId={job.jobId}
+                                />
                             </li>
                         ))}
                     </ul>
                     <ToastContainer />
                 </>
+            ) : (
+                <p style={{textAlign: "center", fontSize: 'large'}}>No jobs available at the moment.</p>
             )}
         </>
     );

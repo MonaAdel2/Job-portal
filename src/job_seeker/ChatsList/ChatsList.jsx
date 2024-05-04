@@ -38,7 +38,7 @@ function ChatsList() {
     return (
         <>
             <MyHeader/>
-            <h1 style={{ marginLeft: '20px' }}>Chats</h1>
+            <h2 style={{ marginLeft: '20px' }}>Chats</h2>
             {chats.length > 0 ? (
                 <ul className="jobs-list" style={{ listStyle: 'none', padding: '0', margin: '0' }}>
                     {chats.map((chat) => (
