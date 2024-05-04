@@ -8,11 +8,11 @@ function AdminHeader(){
         <nav className="nav-bar">
             {/* <a href="/" className="site-title">Job Portal</a> */}
             <span className="site-title">
-                <Link to={'/'}>Job Portal</Link>
+                <Link to={'/admin/dashboard'}>Job Portal</Link>
                 </span>
              <ul>
                 <li>
-                    <Link to={'/'}>Dashboard</Link>
+                    <Link to={'/admin/dashboard'}>Dashboard</Link>
                 </li>
                 
                 <li>

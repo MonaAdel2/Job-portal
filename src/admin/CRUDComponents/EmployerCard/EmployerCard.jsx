@@ -15,7 +15,8 @@ function EmployerCard(props){
            
             {/* <img className="card-img" src= "https://via.placeholder.com/70" alt="Company Logo"></img> */}
             <div className="card-description">
-                <h2 className="card-title">Employer name</h2>
+                <h2 className="card-title">{props.name}</h2>
+                <span>{props.employerId}</span>
             </div>
             <div>
                   <button className="button">

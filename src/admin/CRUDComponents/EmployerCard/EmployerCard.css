@@ -137,6 +137,8 @@
   
 }
 .button{
-  right: 0%;
+  right: 2%;
   position: absolute;
+  margin-top: 7px;
+
 }

@@ -1,11 +1,20 @@
 import React, {useState} from "react";
 import './Login.css'
-function Login(props) {
+import { Link } from 'react-router-dom';
+function  Login(props) {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('')
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        console.log(email);
+    const [jobRole,setJobRole]= useState('')
+  
+        const handleSubmit= async ()=> {
+            const baseurl=`http://localhost:5109/jobs/${jobRole}/login`
+             const result = await fetch( baseurl, 
+          {
+              method: "POST",
+              headers: {
+                  'Content-Type':'application/json'
+              },
+          })        
     }
     return(
        <div className="login-container" >
@@ -20,10 +29,18 @@ function Login(props) {
             <input class="email-input"value={email} type="email" placeholder="youremail@gmail.com" id="email" name="email" onChange={(e) => setEmail(e.target.value)}></input>
             <label className="password-label" htmlFor="password">Password</label>
             <input class="password-input" value={password} type="password"  id="password" name="password" onChange={(e) => setPassword(e.target.value)}></input>
+            <select  value={jobRole} onChange={(e)=> setJobRole(e.target.value)}>
+                <option value="">Select</option>
+                <option value="admin">Admin</option>
+                <option value="jobseeker">Jobseeker</option>
+                <option value="employeer">Employeer</option>
+            </select>
             <button className="login-button" type="submit">Login</button>
-        </form><button className="to-register-button"onClick={()=>props.onFormSwitch('register')}>Don't Have an accout? Register </button>
+            
+        </form>
+        <Link to="/register"><button className="to-register-button" >Don't Have an accout? Register </button></Link> 
         </div>
         </div>
     );
-}
+};
 export default Login

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import JobCard from './JobCard/JobCard.jsx';
 import { Link } from "react-router-dom";
+import AdminHeader from "../AdminHeader.jsx";
 
 
 function DashboardAdmin(){
@@ -62,6 +63,8 @@ function DashboardAdmin(){
                     </ul>
                     <ToastContainer />
                 </> */}
+            <AdminHeader/>
+            
             {jobs && (
                 <>
                     <div>
@@ -78,6 +81,7 @@ function DashboardAdmin(){
                         {jobs.map(job => (
                             <li style={{textDecoration: 'none'}}>
                                 <JobCard 
+                                        flag="j"
                                         title={job.jobTitle}
                                         // location={job.location}
                                         salary={`${job.salray}`}

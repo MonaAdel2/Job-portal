@@ -5,6 +5,7 @@ import './SearchResults.css'
 import JobCard from '../JobCard/JobCard.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import { useSearchParams } from "react-router-dom";
+import MyHeader from '../NavBar/MyHeader.jsx';
 
 
 function SearchResults() {
@@ -169,6 +170,7 @@ function SearchResults() {
 
     return (
         <>
+            <MyHeader/>
             <div>
                 <h2 style={{ marginLeft: '20px' }}>Results</h2>
                 <div className="filter-menu">

@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+.job-details-header{
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    font-size: 30px;
+    color: #000000;
+    font-family: "Poppins";
+    background-color:  #F4F5F7;
+    height: 80px;
+    margin-bottom: 0px;
+}
+.job-type-div {
+    display: flex;
+    align-items: center;
+}
+.job-title{
+    font-size: 35px;
+    padding-left: 15px;
+}
+.job-date{
+    padding-left: 15px;
+}
+.job-type-div p {
+    margin-right: 5px; /* Adjust spacing between paragraphs */
+    display: inline; /* Display paragraphs inline */
+}
+.job-type-text,.job-description-text,.job-salary-text{
+    font-size: 24px;
+    font-family: 'Noto Sans Hebrew', sans-serif;
+    padding-left: 15px;
+    font-style: bold;
+    margin-top: 0;
+}
+.job-type,.job-salary{
+    font-size: 18px;
+    font-family: "Poppins";
+    font-style: bold;
+    margin-top: 0;
+
+}
+.job-description-tex{
+    margin-bottom: 0;
+}
+.job-description-details{
+    font-size: 18px;
+    font-family: 'Noto Sans Hebrew', sans-serif;
+    margin-top: 0;
+    color: black;
+    width: 320px;
+    word-wrap: break-word;
+    padding-left: 15px;
+    padding-right: 10px;
+}
+.job-details-card{
+    margin-top: 0;
+    width: fit-content;
+    height: 100vh;
+    border-right: 2px solid gray;
+}
+.view-proposels-content{
+    display: flex;
+    flex-direction: row;
+}
+.user-name{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 7px;
+    color: #338573;
+    padding-left: 24px;
+    font-size: 30px;
+    font-family: 'Noto Sans Hebrew', sans-serif;
+    font-weight: bold;
+    margin-top: 24px;
+    
+}
+.user-email{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 20px;
+    font-size: 20px;
+  padding-top: 25px;
+  font-family: 'Noto Sans Hebrew', sans-serif;
+}
+.user-card{
+    position: relative;
+    background-color: white;
+    height: 45ch;
+    align-items: center;
+    text-align: center;
+    height: fit-content;
+    width: 35ch;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+.view-proposel-button{
+    background-color: #338573;
+    font-size: 15px;
+    border-radius: 12px;
+    height: 4ch;
+    bottom: 10px; 
+    margin-bottom: 20px;
+    width: 20ch;
+    margin-left: 10px;
+    color: white; 
+    border-color: #338573; 
+    font-family:'Poppines', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+}
+.user-cards-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+}

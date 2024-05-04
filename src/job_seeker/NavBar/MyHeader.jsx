@@ -7,11 +7,11 @@ function MyHeader(){
         <nav className="nav-bar">
             {/* <a href="/" className="site-title">Job Portal</a> */}
             <span className="site-title">
-                <Link to={'/'}>Job Portal</Link>
-                </span>
+                <Link to={'/job-seeker/home'}>Job Portal</Link>
+            </span>
              <ul>
                 <li>
-                    <Link to={'/'}>Home</Link>
+                    <Link to={'/job-seeker/home'}>Home</Link>
                 </li>
                 
                 <li>

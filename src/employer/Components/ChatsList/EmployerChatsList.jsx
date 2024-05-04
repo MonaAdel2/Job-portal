@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ChatCard from './ChatCard';
+import ChatCard from './EmployerChatCard';
 import './ChatsList.css'
-import MyHeader from '../NavBar/MyHeader';
+import NavGraph from '../NavGraph/NavGraph';
 
-function ChatsList() {
+function EmployerChatsList() {
     const [chats, setChats] = useState([]);
     let lastMessage ;
     useEffect(() => {
@@ -37,7 +37,7 @@ function ChatsList() {
 
     return (
         <>
-            <MyHeader/>
+            <NavGraph/>
             <h1 style={{ marginLeft: '20px' }}>Chats</h1>
             {chats.length > 0 ? (
                 <ul className="jobs-list" style={{ listStyle: 'none', padding: '0', margin: '0' }}>
@@ -59,4 +59,4 @@ function ChatsList() {
     );
 }
 
-export default ChatsList;
+export default EmployerChatsList;

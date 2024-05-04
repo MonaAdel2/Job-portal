@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Chat.css';
 import { useParams } from 'react-router-dom';
-import MyHeader from '../../NavBar/MyHeader';
+import NavGraph from '../../NavGraph/NavGraph';
 
-function Chat() {
+function EmployerChat() {
     const [messages, setMessages] = useState([]);
     const [chat, setChat] = useState();
     const [inputMessage, setInputMessage] = useState('');
@@ -88,7 +88,7 @@ function Chat() {
     return (
         
         <div>
-            <MyHeader/>
+            <NavGraph/>
             <h2 style={{ marginLeft: '20px' }}>Chat</h2>
             <div
                 style={{
@@ -124,4 +124,4 @@ function Chat() {
     );
 }
 
-export default Chat;
+export default EmployerChat;

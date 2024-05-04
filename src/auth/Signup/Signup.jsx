@@ -1,116 +1,116 @@
 import React, {useState}from "react";
 import './Signup.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function Signup(props) {
+function Signup (props){
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('')
-    const [firstname,setFirstName] = useState('')
-    const [secondname,setSecondName] = useState('')
+    const [userName,setUserName] = useState('')
+    const [jobRole,setJobRole]= useState('')
+    const [company, setCompany] = useState(null);
+    const [industry, setIndustry] = useState(null);
+    const [error, setError] = useState('');
+    const [showEmployerFields, setShowEmployerFields] = useState(false);
 
-    const [role, setRole] = useState('');
+    const navigate = useNavigate();
 
-    const submitUser = async() =>
-    {
-      const userData = {
-       email: email,
-       password: password,
-        firstname: firstname,
-        secondname:secondname,
-        role: role
-       }
+    const toggleEmployerFields = (e) => {
+        setShowEmployerFields(e.target.value === "employeer");
+    };
+    const submitUser = async (e) => {
+        e.preventDefault();
+        if (!email || !password || !userName || !jobRole) {
+            setError("Please fill out all required fields");
+            return;
+        }
+    
+        if (jobRole === "employeer" && (!company || !industry)) {
+            setError("Please fill out all employer fields");
+            return;
+        }
+        if (password.length < 8) {
+            setError("Password must be at least 8 characters long");
+            return;
+        }
+    const userData = {
+        Email: email,
+        Password: password,
+        UserName: userName,
+        Role: jobRole,
+        Company: company,
+        Industry: industry
+    };
 
-       console.log(userData)
-
-       try{
-
-        const result = await fetch("url", 
-        {
+    try {
+        const response = await fetch("url", {
             method: "POST",
             headers: {
-                'Content-Type':'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(userData)
-        })
-
-        const resultInbJson= await  result.json
-        console.log(resultInbJson)
-
-        // localStorage.setItem("myToken", resultInbJson.token)
-
-
-        if(role === "Job Seeker"){
-            // route to job seeker home page
-           
-        }else if(role === "Employer"){
-            // route to employer home page
+        });
+        const data = await response.json();
+        if (response.ok) {
+            setError("User successfully registered!");
+            if(jobRole === "jobseeker"){
+                navigate('/job-seeker/home')
+            }else if (jobRole === "employeer") {
+                navigate('/postJob')
+            }
+        } else {
+            setError("Failed to register user");
         }
-
-       }catch{
-            console.error("error: can't register you")
-       }
-       
+    } catch (error) {
+        setError("Error occurred, please try again later");
     }
-
-    const handleRoleChange = (event) => {
-        setRole(event.target.value);
-    };
+    setTimeout(() => {
+        setError('');
+    }, 5000);
+};
     
     return(
         <div className="signup-container" >
-            <div className="register-form-container">
-                <div className="welcome-container">
-                    <h1 className="register-header">Register</h1>
-                    <br/>
-                    <span className="register-subheader">Let’s Sign up first for enter into JobConnect Website.</span>
-                </div>
-
-                <form className="register-form" /*onSubmit={handleSubmit}*/>
-
-
-                    <div className="select-container">
-                        <label className='label'htmlFor="name"><b>Role</b></label>
-                        <select className='select_' value={role} onChange={handleRoleChange}>
-                            <option value="">Select a role</option>
-                            <option value="Employer">Employer</option>
-                            <option value="Job Seeker">Job Seeker</option>
-                
-                        </select>
-                    </div>
-
-                   
-                    <div className="input-container">
-                        <label className='label'htmlFor="name"><b>First Name</b></label>
-                        <input value={firstname} type="text" placeholder="firstName" id="firstName" name="Firstname" onChange={(e) => setFirstName(e.target.value)}></input>
-                    </div>
-                
-                    <div className="input-container">
-                        <label className='second-name-label'htmlFor="Secondname"><b>Second Name</b></label>
-                        <input value={secondname} type="text" placeholder="secondName" id="secondName" name="secondName" onChange={(e) => setSecondName(e.target.value)}></input>
-                    </div>
-
-                    <div className="input-container">
-                        <label className='email-label' htmlFor="email"><b>Email</b></label>
-                        <input  value={email} type="email" placeholder="youremail@gmail.com" id="email" name="email"  onChange={(e) => setEmail(e.target.value)}></input>
-                    </div>
-                        
-                    <div className="input-container">
-                        <label className="password-label"  htmlFor="password"><b>Password</b></label>
-                        <input value={password} type="password" placeholder="************" id="password" name="password" onChange={(e) => setPassword(e.target.value)}></input>
-                    </div>
-                    
-                
-                    <div className="button-container">
-                    <button className="button" type="submit" onClick={submitUser}>Sign up</button>
-                    </div>
-                    
-                </form>
-
-                <div className="button-container">
-                <button className="to-login-button"onClick={()=>props.onFormSwitch('login')}>Have an accout? Log in </button>
-                </div>
-            </div>
+         <div className="register-form-container">
+        <div className="welcome-container">
+            <h1 className="register-header">Register</h1>
+            <br/>
+            <span className="register-subheader">Let’s Sign up first for enter into JobConnect Website.</span>
         </div>
+        {error && <div className="error-message">{error}</div>}
+        <form className="register-form" onSubmit={submitUser}>
+            <label className='userName-label'htmlFor="userName">UserName</label>
+            <input value={userName} type="text" placeholder="userName" id="userName" name="userName" onChange={(e) => setUserName(e.target.value)}></input>
+            <label className='email-label'htmlFor="email">Email</label>
+            <input  value={email} type="email" placeholder="youremail@gmail.com" id="email" name="email"  onChange={(e) => setEmail(e.target.value)}></input>
+            <label className="password-label"  htmlFor="password">Password</label>
+            <input value={password} type="password" placeholder="************" id="password" name="password" onChange={(e) => setPassword(e.target.value)}></input>
+           <div className="menu-div">
+            <label className="select-role-label" >Select Role:</label>
+            <select className="job-role-menu"  value={jobRole} onChange={(e)=> {setJobRole(e.target.value); toggleEmployerFields(e);}}>
+                <option value="">Select</option>
+                <option value="jobseeker">Jobseeker</option>
+                <option value="employeer">Employeer</option>
+            </select>
+            </div>
+            {showEmployerFields && (
+                <>
+            <div className="company-div">
+             <label className='company-label'htmlFor="company">Company</label>
+            <input value={company} type="text" placeholder="company" id="company" name="company" onChange={(e) => setCompany(e.target.value)}></input>
+            </div>
+            <div className="industry-div"> 
+            <label className='industry-label' htmlFor="name">Industry</label>
+            <input value={industry} type="text" placeholder="industry" id="industry" name="industry" onChange={(e) => setIndustry(e.target.value)}></input>
+            </div>
+                </>
+            )}
+            <button className="register-button" type="submit">Sign up</button>
+        </form>
+
+        <span className="to-login-message">Have an account? <Link to="/login" className="to-login-link">Log in</Link></span>
+        </div>
+      </div>
+      
     );
-}
+};
 export default Signup

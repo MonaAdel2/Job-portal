@@ -4,6 +4,7 @@ import React, {useEffect, useState } from "react";
 import './home.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyHeader from '../NavBar/MyHeader.jsx';
 
 function Home(){
 
@@ -40,6 +41,8 @@ function Home(){
 
     return(
         <>
+
+        <MyHeader/>
 
                 {/* <>
                     <WelcomeMessage/>

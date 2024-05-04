@@ -2,15 +2,16 @@ import EmployerCard from "./EmployerCard/EmployerCard";
 import {PlusCircle, Edit, Trash2} from 'react-feather';
 import {Modal} from 'react-responsive-modal';
 import React, {useState, useEffect} from 'react';
+import AdminHeader from "../AdminHeader";
 
 function EmployersList() {
 
     const employersList = [
-        {employerId: 1, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
-        {employerId: 2, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
-        {employerId: 3, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
-        {employerId: 4, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
-        {employerId: 5, name: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {id: 1, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {id: 2, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {id: 3, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {id: 4, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
+        {id: 5, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
     ];
 
     const [open, setOpen] = useState(false);
@@ -24,6 +25,8 @@ function EmployersList() {
         "UserName": "",
         'Role': "Employer"
     });
+
+    const [isFormValid, setIsFormValid] = useState(false);
 
     const blankuser = {
         "UserName": "",
@@ -79,6 +82,12 @@ function EmployersList() {
         }
     };
 
+    useEffect(() => {
+        // Check if all fields are filled with valid data
+        const isValid = Object.values(user).every(value => value !== "");
+        setIsFormValid(isValid);
+    }, [user]);
+
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
         setOpen(false);
@@ -87,6 +96,7 @@ function EmployersList() {
 
     return (
         <>
+            <AdminHeader/>
             <div className="add-btn-contanier">
                 <button onClick={onOpenModal}
                         style={{marginTop: '25px', display: 'flex', position: 'absolute', right: '2%'}}>
@@ -101,11 +111,10 @@ function EmployersList() {
                 <h2>{action} User</h2>
                 <div className='form'>
                     <label htmlFor="">User Name</label>
-
                     <input type="text" required value={user.UserName}
                            onChange={(e) => SetEmployer({...user, "UserName": e.target.value})}/>
                     <label htmlFor="">Email</label>
-                    <input type="text" required value={user.email}
+                    <input type="email" required value={user.email}
                            onChange={(e) => SetEmployer({...user, "Email": e.target.value})}/>
                     <label htmlFor="">Password</label>
                     <input type="text" required value={user.Password}
@@ -119,13 +128,13 @@ function EmployersList() {
 
                     {action === 'Add' && <button className='button' style={{position: 'relative', marginTop: '10px'}}
                                                  onClick={() => addNewEmployer()}
-                    >
+                                                 disabled={!isFormValid}>
                         Submit
                     </button>}
                 </div>
             </Modal>
             <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
-                {employers.map(employer => (
+                {employersList.map(employer => (
                     <li key={employer.id}>
                         <EmployerCard
                             name={employer.userName}

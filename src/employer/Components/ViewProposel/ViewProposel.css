@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+.proposel-container{
+    background-color: white;
+    height: fit-content;
+    width: 150ch;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+   border: 1px solid #338573;
+   border-radius: 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.proposal-username{
+    font-family: 'Poppins' , 'sans-serif';
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+}
+.contact-div,.submitted-date-div,.cover-letter-div{
+    display: flex;
+}
+.contact-text,.proposal-submitted-date-text,.proposal-cover-letter-text{
+    font-family: 'Noto Sans Hebrew', sans-serif;
+    font-size: 25px;
+    padding-left: 15px;
+    font-weight: bold;
+    font-weight: 600;
+}
+.proposal-contact,.proposal-submitted-date{
+    font-family:'Poppins, sans-serif';
+    font-size: 22px;
+    padding-top: 6px;
+    padding-left: 6px;
+    height: 60px;
+}
+.submitted-date-div{
+    margin-top: 0;
+}
+.contact-div{
+    margin-bottom: -35px;
+}
+.cover-letter-div{
+    flex-direction: column;
+}
+.proposal-cover-letter{
+    font-family:'Poppins, sans-serif' ;
+    font-size: 20px;
+    padding-left: 16px;
+    line-height: 40px;
+    font-weight: 300;
+    margin-top: -8px;
+    max-height: calc(1.2em * 15); 
+    overflow-y: auto;
+}
+.download-resume-button{
+    color: white;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+    border: #6236F5; 
+    color: white;  
+    margin-top: 1ch;
+    margin-left: 10ch;
+    margin-right: 10ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+    background-color: rgb(53, 53, 228);
+}
+.reject-proposal-button{
+    color: white;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+    border: #6236F5; 
+    color: white;  
+    margin-top: 1ch;
+    margin-left: 10ch;
+    margin-bottom: 1ch;
+    margin-right: 10ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+    background-color: red;
+}
+.accept-proposal-button{
+    color: white;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+    border: #6236F5; 
+    color: white;  
+    margin-top: 1ch;
+    margin-left: 10ch;
+    margin-right: 10ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+    background-color: rgb(34, 169, 34);
+}

@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+.create-job-header{
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center; 
+    font-size: 30px;
+    color: #000000;
+    font-family: "Poppins";
+    background-color:  #F4F5F7;
+    height: 80px;
+    margin-bottom: 30px;
+}
+.job-connect-logo{
+  color: #338573;
+  padding-left: 16px;
+  font-size: 36px;
+justify-content: center; 
+  position: absolute;
+  left: 16px;
+  font-family: 'Noto Sans Hebrew', sans-serif;
+  font-weight: bold;
+}
+.post-job-button{
+    background-color: #338573;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+
+    color: white; 
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;  
+    margin-top: 1ch;
+    margin-left: 43ch;
+   margin-right: 2ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
+}
+.logo-container{
+    position: relative;
+    width: 100vw;
+    margin-top: 20px;
+   height: 80px ;
+   flex-direction: column;
+   align-items: center;
+   display: flex;
+}
+.job-details-container-card{
+    background-color: white;
+    height: 70ch;
+    width: 70ch;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+   border: 1px solid white;
+   border-radius: 20px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+.job-title-type-container{
+    margin-top: 50px;
+    column-count: 2;
+}
+.job-title-input,.job-salery-input{
+    background-color: white;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #EAEBEC;
+    border-color: #EAEBEC;
+    margin-left: 6ch;
+    margin-right: 7ch;
+}
+.job-type-input{
+    background-color: white;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #EAEBEC;
+    margin-left: 6ch;
+    margin-right: 7ch;
+}
+.job-title-label,.job-description-label,.job-type-label,.job-salery-label{
+    color: black;
+    text-align: left;
+    font-size: 20px;
+    margin-left: 6ch;
+    font-family:'Poppins';
+}
+.job-salery-date-container{
+    margin-top: 20px;
+    column-count: 2
+}
+.job-description-div{
+    display: flex;
+    flex-direction: column;
+}
+.job-description-input{
+    background-color: white;
+    font-size: 14px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    border: 2px solid #EAEBEC;
+    border-color: #EAEBEC;
+    margin-left: 6ch;
+    margin-right: 2ch;
+    height: 200px;
+   
+}
+.job-description-input:focus{
+    border-color: #338573; 
+    outline: none; 
+}

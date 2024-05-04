@@ -2,6 +2,7 @@ import Button from "../../Shared/Button";
 import React, {useEffect, useState } from "react";
 import { Link, useParams } from 'react-router-dom';
 import './JobDetails.css'
+import MyHeader from "../NavBar/MyHeader";
 
 
  
@@ -37,6 +38,7 @@ function JobDetails(){
 
     return (
         <div style={{}}>
+            <MyHeader/>
             {details && (
                 <>
                     <div className="job-title-details">

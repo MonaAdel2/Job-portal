@@ -3,6 +3,7 @@ import React, {useEffect, useState } from "react";
 import '../Home/home.css'
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MyHeader from '../NavBar/MyHeader.jsx';
 
 function SavedJobs(){
 
@@ -33,6 +34,7 @@ function SavedJobs(){
 
     return(
         <>
+            <MyHeader/>
             {jobs && (
                 <>
                     <div>

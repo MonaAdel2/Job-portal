@@ -2,6 +2,7 @@ import './JobProposal.css'
 import {ToastContainer, toast} from 'react-toastify';
 import React, {useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
+import MyHeader from '../NavBar/MyHeader';
 
 function JobProposal() {
 
@@ -56,6 +57,7 @@ function JobProposal() {
 
     return (
         <>
+            <MyHeader/>
             <div className="job-title-details">
                 <h2>Apply for the job</h2>
             </div>

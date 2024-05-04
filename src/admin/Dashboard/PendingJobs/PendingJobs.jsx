@@ -2,6 +2,7 @@ import React, {useEffect, useState } from "react";
 import './PendingJobs.css'
 import JobCard from '../JobCard/JobCard.jsx';
 import { Link } from "react-router-dom";
+import AdminHeader from "../../AdminHeader.jsx";
 
 function PendingJobs(){
 
@@ -33,6 +34,7 @@ function PendingJobs(){
 
     return(
         <>
+            <AdminHeader/>
             {jobs && (
                 <>
                     <h2 style={{ marginLeft: '20px' }}>Pending Jobs</h2>
@@ -41,6 +43,7 @@ function PendingJobs(){
                         {jobs.map(job => (
                             <li style={{textDecoration: 'none'}}>
                                 <JobCard 
+                                        flag="p"
                                         title={job.jobTitle}
                                         // location={job.location}
                                         salary={`${job.salray}`}

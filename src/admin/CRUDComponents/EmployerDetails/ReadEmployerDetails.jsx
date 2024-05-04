@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import './ReadEmployerDetails.css'
 import { Modal } from 'react-responsive-modal';
+import AdminHeader from "../../AdminHeader";
 
 function ReadEmployerDetails() {
     const { employerId } = useParams();
@@ -89,6 +90,7 @@ function ReadEmployerDetails() {
 
     return (
         <>
+            <AdminHeader/>
             {details && (
                 <>
                     <div className="employer-name">

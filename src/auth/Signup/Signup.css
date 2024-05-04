@@ -1,20 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 .signup-container{
     background-color: #EAEBEC;
-    /* height: 100%; */
-    /* justify-content: center; */
+    height: 100vh;
+    justify-content: center;
     display: flex;
 }
-
+.register-form{
+    display: flex;
+   flex-direction: column;
+   margin-top: 5ch;
+}
 .register-form-container{
     background-color: white;
-    height: fit-content;
-    width: auto;
-    /* display: flex; */
+    height: max-content;
+    width: 70ch;
+    display: flex;
     flex-direction: column;
-    padding: 30px 50px;
     margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
    border: 1px solid white;
    border-radius: 20px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
@@ -25,85 +27,83 @@
     color: gray;
     margin-top: 0; 
     margin-bottom: 0; 
-    /* line-height: 1;  */
+    line-height: 1; 
 }
-.register-header{
-    margin: 0px;
+.register-button{
+    background-color: #338573;
+    font-size: 16px;
+    padding: 15px 28px;
+    border-radius: 12px;
+    border: #6236F5; 
+    color: white;  
+    margin-top: 5ch;
+    margin-left: 5ch;
+    margin-right: 5ch;
+    font-family:'Trebuchet MS', sans-serif ;
+    font-size: large;
+    font-weight: lighter;
 }
-.welcome-container{
-    /* margin-left: 0px; */
-    padding: 0;
-    margin-left: 20px;
-    margin-bottom: 15px;
-}
-
-.button:hover{
-    background-color: #287567;
+.register-button:hover{
+    background-color:    #338573c5;
     color: white;
 }
 .to-login-button{
     background-color: none;
     background: none;
     border: none;
-    position: relative;
-    color: black;
-}
-
-.register-form{
-    align-items:center;
-  }
-  
-.register-form input{
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
-    background-color: #fcfcfc;
-    width: 350px;
-    height: auto;
-    padding: 10px;
-    margin-left: 20px;
-
-}
-
-.register-form label{
-    margin-left: 20px;
-    font-size: medium;
-}
-
-.button{
-    position:relative
-}
-
-.button a{
-    color: white;
-    text-decoration: none;
-    margin-right: 0;
-  }
-  
-.button-container{
-    position: relative;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.input-container{
-    margin-bottom: auto;
+    height: fit-content;
+    width: fit-content;
+    margin-top: 1ch;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 10px;
+    justify-content: center;
 }
-
-.select_{
-    margin-left: 10px;
+.job-role-menu {
+    width: 150px; /* Set the width of the menu */
+    padding: 2px; /* Add padding */
+    font-size: 16px; /* Set the font size */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add border radius */
+    background-color: #fff; /* Set background color */
+    margin-left: 20px;
+    margin-top: 2px;
+}
+.job-role-menu option {
+    font-size: 16px; /* Set the font size */
+}
+.menu-div{
+margin-top: 20px;
+margin-left: 16px;
+}
+.select-role-label{
+    margin-left: 50px;
+    font-size: 18px;
+}
+.userName-label,.email-label,.password-label,.select-role-labe,.company-label,.industry-label{
+    font-size: 18px;
+}
+.company-div{
+    margin-top: 20px;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 25px;
+    margin-left: 30px;
+}
+.to-login-message {
+    font-size: 14px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 8px;
-    border: 1px solid hsl(0, 0%, 80%);
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
-    padding: 15px 10px;
+    margin: auto;
 }
-.select-container{
 
+.to-login-link {
+    color: #338573;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.to-login-link:hover {
+    color: #338573;
 }

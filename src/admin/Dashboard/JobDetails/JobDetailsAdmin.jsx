@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import './JobDetails.css'
+import AdminHeader from "../../AdminHeader";
 
 
  
@@ -80,6 +81,7 @@ function JobDetailsAdmin(){
     return (
         <>
 
+        <AdminHeader/>
         <div style={{}}>
             {details && (
                 <>
