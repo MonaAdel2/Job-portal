@@ -42,6 +42,7 @@
     font-family:'Trebuchet MS', sans-serif ;
     font-size: large;
     font-weight: lighter;
+    position: unset;
 }
 .register-button:hover{
     background-color:    #338573c5;
@@ -82,6 +83,8 @@ margin-left: 16px;
 }
 .userName-label,.email-label,.password-label,.select-role-labe,.company-label,.industry-label{
     font-size: 18px;
+    /* margin-left: 7ch; */
+    text-align: left;
 }
 .company-div{
     margin-top: 20px;
@@ -94,8 +97,9 @@ margin-left: 16px;
 }
 .to-login-message {
     font-size: 14px;
-    margin-top: 10px;
-    margin: auto;
+    margin-top: 3ch;
+    margin-bottom: 3ch;
+    text-align: center;
 }
 
 .to-login-link {
@@ -106,4 +110,16 @@ margin-left: 16px;
 
 .to-login-link:hover {
     color: #338573;
+}
+
+.register-input{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px hsl(0, 0%, 80%, 0.1);
+    background-color: #fcfcfc;
+    width: auto;
+    height: 40px;
+    padding: 10px;
+    margin-left: 8ch;
+    margin-right: 8ch;
 }
