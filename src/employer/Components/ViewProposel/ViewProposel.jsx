@@ -128,7 +128,7 @@ function ViewProposel() {
         </div>
   
         <button className='accept-proposal-button' onClick={handleAccept}>Accept</button>
-        <button className='reject' onClick={handleReject}>reject</button>
+        <button className='reject-proposal-button' onClick={handleReject}>reject</button>
       </div>
     </div>
 

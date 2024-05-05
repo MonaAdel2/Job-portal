@@ -71,6 +71,7 @@
     font-size: large;
     font-weight: lighter;
     background-color: rgb(53, 53, 228);
+    position: relative;
 }
 .reject-proposal-button{
     color: white;
@@ -87,6 +88,7 @@
     font-size: large;
     font-weight: lighter;
     background-color: red;
+    position: relative;
 }
 .accept-proposal-button{
     color: white;
@@ -102,4 +104,5 @@
     font-size: large;
     font-weight: lighter;
     background-color: rgb(34, 169, 34);
+    position: relative;
 }

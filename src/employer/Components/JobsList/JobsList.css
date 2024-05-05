@@ -22,7 +22,7 @@
 .job-card {
     position: relative;
     background-color: white;
-    height: 45ch;
+    height: 40ch;
     width: 40ch;
     flex-direction: column;
     margin: 10px;
@@ -68,11 +68,13 @@
     border-radius: 12px;
     height: 5ch;
     bottom: 10px; 
-    width: 30ch;
+    width: 90%;
     margin-left: 20px;
     color: white; 
     border-color: #338573; 
     font-family:'Poppines', sans-serif ;
     font-size: large;
     font-weight: lighter;
+    position: unset;
+    
 }
