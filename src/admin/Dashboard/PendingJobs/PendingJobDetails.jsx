@@ -5,7 +5,7 @@ import AdminHeader from "../../AdminHeader";
 
 
 function PendingJobDetails() {
-    
+
     const detail = {
         jobId: 1,
         title: 'Item 1',
@@ -19,8 +19,7 @@ function PendingJobDetails() {
     const [details, setJobDetails] = useState(null); // Stores fetched data
     useEffect(() => {
         const fetchData = async () => {
-
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODcxODk2LCJpc3MiOiJqb2JDb25uZWN0In0.-m0jVBVvn1mQQVT3vqI9NiT3u7cop2NZiUxCPxvaOiw"
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTYyNjYyLCJpc3MiOiJqb2JDb25uZWN0In0.CZV4pNmyRSR4d03TqGv450ay_UnE9AFa2FbE6rxI6pg"
 
             try {
                 const url = `http://localhost:5109/admin/jobs/${jobId}`; // Replace with your API endpoint
@@ -44,10 +43,10 @@ function PendingJobDetails() {
 
     const handleAccept = async () => {
         try {
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ1MDQwNjksImlzcyI6ImpvYkNvbm5lY3QifQ.L-mU_o-CdQ76FT03uwda02u1uobdHaY0Pi3faxUJu5U";
-            const url = `http://localhost:5109/jobs/${jobId}/accept`;
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTkyMTc2LCJpc3MiOiJqb2JDb25uZWN0In0.65KlyJSScJQv83u5t1LcSe0bO-kTGxFPnjl8roKCs74";
+            const url = `http://localhost:5109/admin/jobs/accept?jobId=${jobId}`;
             const response = await fetch(url, {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -63,11 +62,11 @@ function PendingJobDetails() {
     const handleReject = async () => {
         try {
             const navigate = useNavigate();
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ1MDQwNjksImlzcyI6ImpvYkNvbm5lY3QifQ.L-mU_o-CdQ76FT03uwda02u1uobdHaY0Pi3faxUJu5U";
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTYyNjYyLCJpc3MiOiJqb2JDb25uZWN0In0.CZV4pNmyRSR4d03TqGv450ay_UnE9AFa2FbE6rxI6pg"
 
-            const url = `http://localhost:5109/jobs/${jobId}/reject`;
+            const url = `http://localhost:5109/admin/jobs/${jobId}/reject`;
             const response = await fetch(url, {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -87,7 +86,7 @@ function PendingJobDetails() {
 
             <AdminHeader/>
             <div style={{}}>
-                 {details ? (
+                {details ? (
                     <>
                         <div className="job-title-details">
                             <h1>{details.jobTitle}</h1>
@@ -95,19 +94,19 @@ function PendingJobDetails() {
 
                         <div>
                             <ul className="job-details">
-                                <li><b>Employer : </b> {details.employerName}</li>
+                                <li><b>Employer : </b> {details.employer.userName}</li>
                                 <li><b>Job Type : </b> {details.jobType}</li>
                                 <li><b>Salary : </b> {`${details.salray}`}</li>
                                 <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                                <li><b>Job description</b></li>
+                                <li><b>Job description</b>
+                                </li>
                             </ul>
-                            <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
+                            <p style={{marginLeft: '25px'}}>{details.jobDescription}</p>
                         </div>
                         <div className="btn-container">
                             <button className="button"
                                     style={{marginRight: '60px'}}
                                     onClick={handleAccept}>
-
                                 Accept
                             </button>
                         </div>
@@ -121,11 +120,11 @@ function PendingJobDetails() {
                         </div>
 
                     </>
-            ) : (
-                <p style={{ textAlign: 'center' }}>No job details available.</p>
-            )}
-             </div>
-             {/* <div className="job-title-details">
+                ) : (
+                    <p style={{textAlign: 'center'}}>No job details available.</p>
+                )}
+            </div>
+            {/* <div className="job-title-details">
                             <h1>{detail.jobTitle}</h1>
                         </div>
 

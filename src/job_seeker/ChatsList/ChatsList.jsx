@@ -14,7 +14,7 @@ function ChatsList() {
     const fetchChats = async () => {
         try {
             const url = 'http://localhost:5109/chat/job-seeker'
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ4NDk4NDcsImlzcyI6ImpvYkNvbm5lY3QifQ.lLCoEpvUk8Bo3TxNNJ007Mp0CqIjXjFpTZ9jD4Bi47Y";
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ5NjQ2ODgsImlzcyI6ImpvYkNvbm5lY3QifQ.Cy_Ne55XTpigFD4-vdXTx27Y07b-EfSfRc-xvoLsyx4"
             // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
             const response = await fetch(url, {
                 method: 'GET',
@@ -45,7 +45,7 @@ function ChatsList() {
                         <li key={chat.id} style={{ textDecoration: 'none' }}>
                             <ChatCard chatTitle={chat.employer.userName}
                                       chatId={chat.id}
-                                      lastMessage={chat.messages.length > 0 ? chats[0].messages.slice(-1)[0].content : "Start Chat Now!"} />
+                                      lastMessage={chat.messages.length > 0 ? chats[0].messages.slice(-1)[0].content : "Start Chat Now!"} /> //Todo
                         </li>
                     ))}
                 </ul>

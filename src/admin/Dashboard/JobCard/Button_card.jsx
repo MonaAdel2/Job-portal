@@ -11,7 +11,7 @@ function Button_card(props) {
         console.log("jobs button clicked");
 
     }else if(props.flag === "p"){
-        path = "/admin/pendingJobDetails" + props.jobId
+        path = "/admin/pendingJobDetails/" + props.jobId
         console.log("pending jobs button clicked");
 
     }else{

@@ -12,7 +12,9 @@ function JobDetailsAdmin(){
         title: 'Item 1',
         employerName: 'Mona',
         salray: '5000' ,
-        jobType: "Full time"}
+        jobType: "Full time",
+        jobDescription:"desc"
+    }
 
     const { jobId } = useParams();
 
@@ -20,7 +22,7 @@ function JobDetailsAdmin(){
     useEffect (()  => {
         const fetchData = async () => {
 
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0ODcxODk2LCJpc3MiOiJqb2JDb25uZWN0In0.-m0jVBVvn1mQQVT3vqI9NiT3u7cop2NZiUxCPxvaOiw"
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTYyNjYyLCJpc3MiOiJqb2JDb25uZWN0In0.CZV4pNmyRSR4d03TqGv450ay_UnE9AFa2FbE6rxI6pg"
             try {
                 const url = `http://localhost:5109/admin/jobs/${jobId}`; // Replace with your API endpoint
                 const response = await fetch (url, {
@@ -31,8 +33,10 @@ function JobDetailsAdmin(){
                     }
                 });
                 const data = await response.json();
-                console.log('data is $'+{data})
-                setJobDetails (data);
+                const allKeys = Object.keys(data);
+                console.log('All keys in data:', allKeys);
+                console.log('data is ', data.jobDescription)
+                setJobDetails(data);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -96,9 +100,10 @@ function JobDetailsAdmin(){
                     <li><b>Job Type : </b> {details.jobType}</li>
                     <li><b>Salary : </b> {`${details.salray}`}</li>
                     <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                    <li><b>Job description</b></li>
+                    <li><b>Job description</b>
+                        <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
+                    </li>
                 </ul>
-                <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
             </div>
         </>
          ) : (
