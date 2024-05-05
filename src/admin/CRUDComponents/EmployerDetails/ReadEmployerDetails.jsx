@@ -17,6 +17,7 @@ function ReadEmployerDetails() {
     }
 
     const [details, setEmployerDetails] = useState(null);
+    const [user, setUser] = useState(); // set the initial state to the employer's data
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,6 +33,7 @@ function ReadEmployerDetails() {
                 });
                 const data = await response.json();
                 setEmployerDetails(data);
+                setUser(details)
             } catch (error) {
                 console.error("Error fetching employer data:", error);
             }
@@ -50,7 +52,7 @@ function ReadEmployerDetails() {
 
     const [open, setOpen] = useState(false);
     const [action, setAction] = useState('Update');
-    const [user, setUser] = useState(details); // set the initial state to the employer's data
+    
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {

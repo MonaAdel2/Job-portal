@@ -48,7 +48,7 @@ function DashboardAdmin(){
 
                 <AdminHeader/>
                 <>
-                    <h2 style={{ marginLeft: '20px' }}>Jobs</h2>
+                    {/* <h2 style={{ marginLeft: '20px' }}>Jobs</h2> */}
                     {/* <ul className='jobs-list' style={{listStyle: 'none', padding: '0', margin: '0'}}>
                         {jobsList.map(job => (
                             <li style={{textDecoration: 'none'}}>

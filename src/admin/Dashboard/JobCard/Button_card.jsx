@@ -9,9 +9,11 @@ function Button_card(props) {
     if(props.flag === "j"){
         path = "/admin/jobDetails/" + props.jobId
         console.log("jobs button clicked");
+
     }else if(props.flag === "p"){
-        path = "/admin/pendingJobDetails/" + props.jobId
+        path = "/admin/pendingJobDetails" + props.jobId
         console.log("pending jobs button clicked");
+
     }else{
         console.log(" button clicked");
     }

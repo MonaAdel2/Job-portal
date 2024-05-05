@@ -60,7 +60,7 @@ input{
     position: unset;
 }
 .login-button:hover{
-    background-color: rgba(77, 23, 255, 0.623);
+    background-color:#338573c5;
     color: white;
 }
 

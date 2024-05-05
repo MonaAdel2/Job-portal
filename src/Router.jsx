@@ -137,7 +137,7 @@ export const Router = createBrowserRouter([
         element: <PendingJobs />,
       },
       {
-        path: '/admin/pendingJobs/jobDetails',
+        path: '/admin/pendingJobDetails/:jobId',
         element: <PendingJobDetails />,
       },
       {
