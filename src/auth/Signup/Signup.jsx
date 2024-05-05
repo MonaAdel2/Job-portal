@@ -11,11 +11,10 @@ function Signup (props){
     const [industry, setIndustry] = useState(null);
     const [error, setError] = useState('');
     const [showEmployerFields, setShowEmployerFields] = useState(false);
-
-    const navigate = useNavigate();
-
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const navigate =useNavigate()
     const toggleEmployerFields = (e) => {
-        setShowEmployerFields(e.target.value === "employeer");
+        setShowEmployerFields(e.target.value === "employer");
     };
     const submitUser = async (e) => {
         e.preventDefault();
@@ -23,15 +22,16 @@ function Signup (props){
             setError("Please fill out all required fields");
             return;
         }
+        if (!regex.test(password)) {
+            setError('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
+            return
+        }
     
-        if (jobRole === "employeer" && (!company || !industry)) {
+        if (jobRole === "employer" && (!company || !industry)) {
             setError("Please fill out all employer fields");
             return;
         }
-        if (password.length < 8) {
-            setError("Password must be at least 8 characters long");
-            return;
-        }
+       
     const userData = {
         Email: email,
         Password: password,
@@ -42,7 +42,8 @@ function Signup (props){
     };
 
     try {
-        const response = await fetch("url", {
+        const url= "http://localhost:5109/register"
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -50,13 +51,18 @@ function Signup (props){
             body: JSON.stringify(userData)
         });
         const data = await response.json();
-        if (response.ok) {
-            setError("User successfully registered!");
-            if(jobRole === "jobseeker"){
-                navigate('/job-seeker/home')
-            }else if (jobRole === "employeer") {
+        if (data.ok) {
+            const token = data.token; 
+            localStorage.setItem('token', token);
+            
+            if(jobRole === "employer"){
                 navigate('/postJob')
+            }else if(jobRole === "jobseeker"){
+                navigate('/job-seeker/home')
             }
+            
+            setError("User successfully registered!");
+
         } else {
             setError("Failed to register user");
         }
@@ -65,7 +71,7 @@ function Signup (props){
     }
     setTimeout(() => {
         setError('');
-    }, 5000);
+    }, 2000);
 };
     
     return(
@@ -92,7 +98,7 @@ function Signup (props){
                 <select className="job-role-menu"  value={jobRole} onChange={(e)=> {setJobRole(e.target.value); toggleEmployerFields(e);}}>
                     <option value="">Select</option>
                     <option value="jobseeker">Jobseeker</option>
-                    <option value="employeer">Employeer</option>
+                    <option value="employer">Employer</option>
                 </select>
             </div>
 
@@ -100,11 +106,11 @@ function Signup (props){
                 <>
                     <div className="company-div">
                     <label className='company-label'htmlFor="company">Company</label>
-                    <input value={company} type="text" placeholder="company" id="company" name="company" onChange={(e) => setCompany(e.target.value)}></input>
+                    <input className="register-input" value={company} type="text" placeholder="company" id="company" name="company" onChange={(e) => setCompany(e.target.value)}></input>
                     </div>
                     <div className="industry-div"> 
                     <label className='industry-label' htmlFor="name">Industry</label>
-                    <input value={industry} type="text" placeholder="industry" id="industry" name="industry" onChange={(e) => setIndustry(e.target.value)}></input>
+                    <input className="register-input" value={industry} type="text" placeholder="industry" id="industry" name="industry" onChange={(e) => setIndustry(e.target.value)}></input>
                     </div>
                 </>
             )}

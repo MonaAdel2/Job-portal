@@ -3,6 +3,32 @@ import "../../src/job_seeker/NavBar/NavBar.css"
 import { Link } from "react-router-dom";
 
 function AdminHeader(){
+
+    const token = localStorage.getItem('token');
+    
+    const handleLogout = async () => {
+
+        try {
+            const url= "http://localhost:5109/login" // url for logout (admin)
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json', // Adjust if your API requires headers
+                    'Authorization':`Bearer ${token}`
+                },
+                body: JSON.stringify(userData)
+            });
+            const data = await response.json();
+            if (data.successful === true) {
+                console.log("Logged out");
+                localStorage.removeItem('token');
+            } else {
+                
+            }
+        } catch (error) {
+            
+        }
+    }
     
     return(
         <nav className="nav-bar">
@@ -22,7 +48,7 @@ function AdminHeader(){
                 
                 
                 <li>
-                    <Link to={"/login"}>Logout</Link>
+                    <Link to={"/login"} onClick={handleLogout}>Logout</Link>
                 </li>
             </ul>
         </nav>

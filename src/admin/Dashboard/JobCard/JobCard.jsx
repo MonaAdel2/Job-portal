@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function JobCard(props){
 
+    const token = localStorage.getItem('token');
+
     return(
         <div className="card">
             <img className="card-img" src= "https://via.placeholder.com/70" alt="Company Logo"></img>

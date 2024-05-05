@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function JobCard(props){
+    const token = localStorage.getItem('token');
 
     const handleClick2 = ()=>{
         toast.success("The job is Saved");

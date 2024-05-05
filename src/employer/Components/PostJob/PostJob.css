@@ -64,7 +64,7 @@ justify-content: center;
     margin-top: 50px;
     column-count: 2;
 }
-.job-title-input,.job-salery-input{
+.job-title-input,.job-salery-input, .job-location-input, .job-industry-input{
     background-color: white;
     font-size: 14px;
     padding: 12px 28px;
@@ -92,7 +92,7 @@ justify-content: center;
     padding: 15px 10px;
 }
 
-.job-title-label,.job-description-label,.job-type-label,.job-salery-label{
+.job-title-label,.job-description-label,.job-type-label,.job-salery-label, .job-industry-label,.job-location-label{
     color: black;
     text-align: left;
     font-size: 20px;
@@ -119,6 +119,7 @@ justify-content: center;
     height: 200px;
    
 }
+
 .job-description-input:focus{
     border-color: #338573; 
     outline: none; 

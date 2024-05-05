@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Search(){
+    const token = localStorage.getItem('token');
 
     const [query, setQuery] = useState("");
     const navigate = useNavigate();

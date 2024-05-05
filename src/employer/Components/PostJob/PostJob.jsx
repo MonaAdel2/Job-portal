@@ -3,37 +3,43 @@ import './PostJob.css'
 import { Link } from 'react-router-dom';
 import NavGraph from '../NavGraph/NavGraph';
  function PostJob() {
-    const [jobTitle,setJobTitle] = useState('');
-    const [jobType,setJobType] = useState("");
-    const [jobSalery,setjobSalery] = useState("");
-    const [jobDate,setjobDate] = useState("");
-    const [jobDescription,setjobDescription] = useState("");
-    const [error, setError] = useState('');
-    const [jobData, setJobData] = useState(null);
-    const currentDate = new Date();
-    const formattedDate = currentDate.toLocaleDateString()
-    const handleSubmit= async ()=> {
-            const jobData = {
-             jobTitle: jobTitle,
-             jobType: jobType,
-              salery: jobSalery,
-              postDate:formattedDate,
-              jobDescription:jobDescription,
-              isActive:0
-            }
-             const result = await fetch("url", 
-          {
-              method: "POST",
-              headers: {
-                  'Content-Type':'application/json'
-              },
-              body: JSON.stringify(jobData)
-          })
-          const resultInbJson =  await result.json
-          console.log(resultInbJson)
-          setJobData(jobData)
-          
-    }
+  const [jobTitle,setJobTitle] = useState('');
+  const [jobType,setJobType] = useState("");
+  const [jobSalery,setjobSalery] = useState("");
+  const [jobDate,setjobDate] = useState("");
+  const [jobindustry,setjobIndustry] = useState("");
+  const [jobLocation,setjobLocation] = useState("");
+  const [jobDescription,setjobDescription] = useState("");
+  const [error, setError] = useState('');
+  const [jobData, setJobData] = useState(null);
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString()
+  const token = localStorage.getItem('token');
+  const handleSubmit= async ()=> {
+          const jobData = {
+           jobTitle: jobTitle,
+           jobType: jobType,
+            salray: jobSalery,
+            postDate:currentDate,
+            jobDescription:jobDescription,
+            isActive:true
+          }
+      const url= "http://localhost:5109/employer/jobs/add"
+
+      const result = await fetch(url,
+        {
+            method: "POST",
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(jobData)
+        })
+        const resultInbJson =  await result.json
+        console.log(resultInbJson)
+        setJobData(jobData)
+
+  }
   return (
     <div className='postJobContaioner' >
       <NavGraph/>
@@ -59,6 +65,20 @@ import NavGraph from '../NavGraph/NavGraph';
             <div className='job-salary-div'>
                 <label className='job-salery-label'>Salery</label>
                 <input className='job-salery-input' value={jobSalery} type='text' onChange={(e)=> setjobSalery(e.target.value)} ></input>
+            </div>
+            </div>
+
+            <div className='job-industry-date-container'>
+            <div className='job-industry-div'>
+                <label className='job-industry-label'>Industry</label>
+                <input className='job-industry-input' value={jobindustry} type='text' onChange={(e)=> setjobIndustry(e.target.value)} ></input>
+            </div>
+
+            </div>
+            <div className='job-location-date-container'>
+            <div className='job-location-div'>
+                <label className='job-location-label'>Location</label>
+                <input className='job-location-input' value={jobLocation} type='text' onChange={(e)=> setjobLocation(e.target.value)} ></input>
             </div>
             </div>
             <div className='job-description-div'>

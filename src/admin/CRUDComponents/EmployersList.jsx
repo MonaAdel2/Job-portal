@@ -6,6 +6,11 @@ import AdminHeader from "../AdminHeader";
 
 function EmployersList() {
 
+    const token = localStorage.getItem('token');
+    const [error, setError] = useState('');
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+
     const employersList = [
         {id: 1, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
         {id: 2, userName: 'Item 1', email: 'email', company: 'company', industry: 'industry'},
@@ -34,7 +39,7 @@ function EmployersList() {
 
     const fetchEmployersList = async () => {
         const url = `https://jobconnectapi-1.onrender.com/admin/employers`
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTQ5OTM0NDUsImlzcyI6ImpvYkNvbm5lY3QifQ.net0LJuj85FCpfO12pcpfvZDocGzUvXl0DWOuvzAIqw"
+        // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTQ5OTM0NDUsImlzcyI6ImpvYkNvbm5lY3QifQ.net0LJuj85FCpfO12pcpfvZDocGzUvXl0DWOuvzAIqw"
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -51,7 +56,17 @@ function EmployersList() {
         }
     };
 
-    const addNewEmployer = async () => {
+    const addNewEmployer = async (e) => {
+        e.preventDefault();
+
+        if(!isFormValid){
+            setError("Please fill all the fields.");
+            return;
+        }
+        if (!regex.test(password)) {
+            setError('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
+            return;
+        }
         try {
             const url = `http://localhost:5109/admin/employers`
             const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTYyNjYyLCJpc3MiOiJqb2JDb25uZWN0In0.CZV4pNmyRSR4d03TqGv450ay_UnE9AFa2FbE6rxI6pg"
@@ -68,6 +83,7 @@ function EmployersList() {
             setEmployersData([...employers, data]);
             SetEmployer(user);
             onCloseModal(); // Close the modal after adding the new employer
+            setError("");
         } catch (error) {
             console.error('Error adding new employer:', error);
         }
@@ -100,6 +116,7 @@ function EmployersList() {
 
             <Modal open={open} onClose={onCloseModal} center>
                 <h2>{action} User</h2>
+                {error && <div className="error-message2" style={{color: "red"}}>{error}</div>}
                 <div className='form'>
                     <label htmlFor="">User Name</label>
                     <input type="text" required value={user.UserName}
@@ -118,7 +135,7 @@ function EmployersList() {
                            onChange={(e) => SetEmployer({...user, "Industry": e.target.value})}/>
 
                     {action === 'Add' && <button className='button' style={{position: 'relative', marginTop: '10px'}}
-                                                 onClick={() => addNewEmployer()}
+                                                 onClick={addNewEmployer}
                                                  disabled={!isFormValid}>
                         Submit
                     </button>}

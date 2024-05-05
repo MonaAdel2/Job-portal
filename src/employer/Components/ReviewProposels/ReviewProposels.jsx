@@ -9,22 +9,23 @@ function ReviewProposels() {
  const [Job, setJob] = useState(null);
  const [proposels, setProposels] = useState(null);
  const { jobId } = useParams();
+ const token = localStorage.getItem('token');
     useEffect(() => {
-    const job = JobsListData.find(item => item.jobId === jobId);
-     setJob(JobsListData.find(item => item.jobId === jobId))
-    //  fetchData();
-    //   getProposels()
+ // const job = JobsListData.find(item => item.jobId === jobId);
+  //    setJob(JobsListData.find(item => item.jobId === jobId))
+    fetchData();
+    getProposels()
     }, [jobId]);
 
     const fetchData = async () => {
       console.log('Fetching data...');
-        const baseurl=`http://localhost:5109/employer/jobs/${jobId}`
-        const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzZjljNzJkLTIyYTQtNDQzNi04MDdmLWJkODJkMGFlMWY3NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiRW1wbG95ZXIyIiwiZXhwIjoxNzE0Nzk4ODk5LCJpc3MiOiJqb2JDb25uZWN0In0.NjcP27N8tEWW6KzE2t7FMlPWCjM6LWTwTVPEBSd_OK8`
+        const baseurl=`https://jobconnectapi-1.onrender.com/employer/jobs/${jobId}`
         try {
             const response = await fetch( baseurl, {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 }
             });
             if (!response.ok) {
@@ -37,14 +38,13 @@ function ReviewProposels() {
         }
     };
     const getProposels =async ()=>{
-
+        const baseurl=`https://jobconnectapi-1.onrender.com/jobs/${jobId}/proposals`
         try {
-            const baseurl=`http://localhost:5109/jobs/${jobId}/proposals`
-            const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzZjljNzJkLTIyYTQtNDQzNi04MDdmLWJkODJkMGFlMWY3NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiRW1wbG95ZXIyIiwiZXhwIjoxNzE0Nzk4ODk5LCJpc3MiOiJqb2JDb25uZWN0In0.NjcP27N8tEWW6KzE2t7FMlPWCjM6LWTwTVPEBSd_OK8`
-            const response = await fetch( baseurl, {
+            const response = await fetch( `https://jobconnectapi-1.onrender.com/jobs/${jobId}/proposals` , {
                 method: 'GET',
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzZjljNzJkLTIyYTQtNDQzNi04MDdmLWJkODJkMGFlMWY3NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiRW1wbG95ZXIyIiwiZXhwIjoxNzE0OTcxOTkwLCJpc3MiOiJqb2JDb25uZWN0In0.5Jd6RxCvg9YSdtPrEQ47SJim7ga8U6ybGDA8QHBeVRY`,
+                    'Content-Type': 'application/json'
                 }
             });
             if (!response.ok) {
@@ -85,13 +85,13 @@ function ReviewProposels() {
       </div>
       <div className='user-cards-container'>
         
-      {proposelsData && proposelsData.map((val,key)=>{
+      {proposels && proposels.map((val,key)=>{
         return(
             <div className='user-card'  key={key} >
-            <p className='user-name'>{val.userName}</p>
-            <p className='user-email'>{val.email}</p>
+            <p className='user-name'>{val.jobSeeker.userName}</p>
+            <p className='user-email'>{val.jobSeeker.email}</p>
             <div className='buttons-container'>
-                <Link to={`/viewProposel/${val.ProposalId}`}><button className='view-proposel-button'>View proposel</button></Link>
+                <Link to={`/viewProposel/${val.proposalId}`}><button className='view-proposel-button'>View proposel</button></Link>
             </div>
             </div>
         )
