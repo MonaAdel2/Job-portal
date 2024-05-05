@@ -141,7 +141,7 @@ function ReadEmployerDetails() {
                         <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
                         <label htmlFor="">Industry</label>
                         <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
-                        <button className='button' style={{ position: 'relative', marginTop: '10px' }} onClick={updateUser}>Update</button>
+                        <button className='button' style={{position: 'relative', marginTop: '10px',width: '100%', right: '0'}} onClick={updateUser}>Update</button>
                     </div>
                 </Modal>
             </>

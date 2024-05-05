@@ -58,12 +58,16 @@ function EmployersList() {
 
     const addNewEmployer = async (e) => {
         e.preventDefault();
-
-        if(!isFormValid){
-            setError("Please fill all the fields.");
+        if (!user.Email || !user.Password || !user.UserName || !user.Company || !user.Industry) {
+            setError("Please fill out all required fields");
             return;
         }
-        if (!regex.test(password)) {
+
+        // if(!isFormValid){
+        //     setError("Please fill all the fields.");
+        //     return;
+        // }
+        if (!regex.test(user.Password)) {
             setError('Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one digit, and one special character.');
             return;
         }
@@ -134,9 +138,10 @@ function EmployersList() {
                     <input type="text" required value={user.industry}
                            onChange={(e) => SetEmployer({...user, "Industry": e.target.value})}/>
 
-                    {action === 'Add' && <button className='button' style={{position: 'relative', marginTop: '10px'}}
+                    {action === 'Add' && <button className='button' style={{position: 'relative', marginTop: '10px',width: '100%', right: '0'}}
                                                  onClick={addNewEmployer}
-                                                 disabled={!isFormValid}>
+                                                //  disabled={!isFormValid}
+                                                 >
                         Submit
                     </button>}
                 </div>

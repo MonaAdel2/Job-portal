@@ -68,19 +68,21 @@ import NavGraph from '../NavGraph/NavGraph';
             </div>
             </div>
 
-            <div className='job-industry-date-container'>
-            <div className='job-industry-div'>
-                <label className='job-industry-label'>Industry</label>
-                <input className='job-industry-input' value={jobindustry} type='text' onChange={(e)=> setjobIndustry(e.target.value)} ></input>
-            </div>
+                <div className='job-salery-date-container' style={{marginRight: '0'}}>
+                    <div className='job-industry-div'>
+                        <label className='job-salery-label'>Industry</label>
+                        <input className='job-salery-input' value={jobindustry} type='text' onChange={(e)=> setjobIndustry(e.target.value)} ></input>
+                    </div>
+                </div>
+                <div className='job-salery-date-container'>
+                    <div className='job-location-div'>
+                        <label className='job-salery-label'>Location</label>
+                        <input className='job-salery-input' value={jobLocation} type='text' onChange={(e)=> setjobLocation(e.target.value)} ></input>
+                    </div>
+                </div>
 
-            </div>
-            <div className='job-location-date-container'>
-            <div className='job-location-div'>
-                <label className='job-location-label'>Location</label>
-                <input className='job-location-input' value={jobLocation} type='text' onChange={(e)=> setjobLocation(e.target.value)} ></input>
-            </div>
-            </div>
+           
+
             <div className='job-description-div'>
             <label className='job-description-label'>Job description</label>
             <textarea className='job-description-input' value={jobDescription} type='text' onChange={(e)=> setjobDescription(e.target.value)}></textarea>

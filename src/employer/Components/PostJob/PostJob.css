@@ -51,7 +51,7 @@ justify-content: center;
 }
 .job-details-container-card{
     background-color: white;
-    height: 70ch;
+    height: 80ch;
     width: 70ch;
     display: flex;
     flex-direction: column;
@@ -124,3 +124,5 @@ justify-content: center;
     border-color: #338573; 
     outline: none; 
 }
+
+
