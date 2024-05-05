@@ -9,7 +9,7 @@ function Button_card(props) {
     return (
 
         <button className="custom-button">
-            <Link to={"/ReadEmployerDetails/" + props.Employer_Id} className="custom-button">Read</Link>
+            <Link to={"/ReadEmployerDetails/" + props.employerId} className="custom-button">Read</Link>
         </button>
 
         

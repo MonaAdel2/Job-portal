@@ -13,8 +13,8 @@ function ChatsList() {
 
     const fetchChats = async () => {
         try {
-            const url = 'http://localhost:5109/chat/job-seeker'
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ5NjQ2ODgsImlzcyI6ImpvYkNvbm5lY3QifQ.Cy_Ne55XTpigFD4-vdXTx27Y07b-EfSfRc-xvoLsyx4"
+            const url = 'https://jobconnectapi-1.onrender.com/chat/job-seeker'
+            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ5OTgyMDgsImlzcyI6ImpvYkNvbm5lY3QifQ.-_QOM2QUFWAdyWkFIMQxVWx1g0v6exay2VgRKP-ExUw"
             // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
             const response = await fetch(url, {
                 method: 'GET',
@@ -28,7 +28,7 @@ function ChatsList() {
             }
             const data = await response.json();
             setChats(data); // Assuming the API returns an array of chats
-            // lastMessage = chat.messages.length > 0 ? chats[0].messages.slice(-1)[0] : "Start Chat Now!";
+            lastMessage = data.messages.length > 0 ? chats[0].messages.slice(-1)[0] : "Start Chat Now!";
             console.log("The last message is ", lastMessage)
         } catch (error) {
             console.error('Error fetching chats:', error);
