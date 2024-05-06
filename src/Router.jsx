@@ -28,6 +28,7 @@ import ReviewProposels from './employer/Components/ReviewProposels/ReviewPropose
 import ViewProposel from './employer/Components/ViewProposel/ViewProposel.jsx';
 import EmployerChatsList from './employer/Components/ChatsList/EmployerChatsList.jsx';
 import EmployerChat from './employer/Components/ChatsList/Chat/EmployerChat.jsx';
+import AuthGuard from './Guards/AuthGguard.jsx';
 
 export const Router = createBrowserRouter([
 
@@ -52,101 +53,213 @@ export const Router = createBrowserRouter([
 
       {
         path: '/job-seeker',
-        element: <Home />,
+        element: (
+          <AuthGuard>
+            <Home />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/job-seeker/home',
-        element: <Home />,
+        element: (
+          <AuthGuard>
+            <Home />
+          </AuthGuard>
+        ),
+         
       },
       {
         path: '/job-seeker/savedJobs',
-        element: <SavedJobs />,
+        element: (
+          <AuthGuard>
+             <SavedJobs />
+          </AuthGuard>
+        ),
+
       },
       {
         path: '/job-seeker/chats',
-        element: <ChatsList />,
+        element: (
+          <AuthGuard>
+            <ChatsList />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/job-seeker/chats/chat/:chatId',
-        element: <Chat />,
+        element: (
+          <AuthGuard>
+             <Chat />
+          </AuthGuard>
+        ),
+       
       },
       {
         path: '/job-seeker/jobDetails/:jobId',
-        element: <JobDetails />,
+        element: (
+          <AuthGuard>
+              <JobDetails />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/job-seeker/searchResults',
-        element: <SearchResults />,
+        element: (
+          <AuthGuard>
+            <SearchResults />
+          </AuthGuard>
+        ),
+         
       },
       {
         path: '/job-seeker/applyJob/:jobId',
-        element: <JobProposal />,
+        element: (
+          <AuthGuard>
+            <JobProposal />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/job-seeker/applyJob/:jobId/submitted',
-        element: <SubmittedProposal />,
+        element: (
+          <AuthGuard>
+            <SubmittedProposal />
+          </AuthGuard>
+        ),
+        
       },
 
 
 // ----------------------- Employer Routes -------------------------------------------------------
       {
         path: '/employer',
-        element: <PostJob />,
+        element: (
+          <AuthGuard>
+            <PostJob/>
+          </AuthGuard>
+        ),
       },
       {
         path: '/postJob',
-        element: <PostJob />,
+        element: (
+          <AuthGuard>
+            <PostJob />
+          </AuthGuard>
+        )
       },
       {
         path: '/jobsList',
-        element: <JobsList />,
+        element: (
+          <AuthGuard>
+            <JobsList/>
+          </AuthGuard>
+        ),
       },
       {
         path: '/reviewProposels/:jobId',
-        element: <ReviewProposels />,
+        element: (
+          <AuthGuard>
+             <ReviewProposels />
+          </AuthGuard>
+        ),
+       
       },
       {
         path: '/viewProposel/:proposalId',
-        element: <ViewProposel />,
+        element: (
+          <AuthGuard>
+            <ViewProposel />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/chats',
-        element: <EmployerChatsList />,
+        element: (
+          <AuthGuard>
+            <EmployerChatsList />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/chats/chat/:chatId',
-        element: <EmployerChat />,
+        element: (
+          <AuthGuard>
+            <EmployerChat />
+          </AuthGuard>
+        ),
+        
       },
 
 // ------------------------- Admin Routes ----------------------------------------------------------
 
       {
         path: '/admin',
-        element: <DashboardAdmin />,
+        element: (
+          <AuthGuard>
+              <DashboardAdmin />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/admin/dashboard',
-        element: <DashboardAdmin />,
+        element: (
+          <AuthGuard>
+             <DashboardAdmin />
+          </AuthGuard>
+        ),
+       
       },
       {
         path: '/admin/jobDetails/:jobId',
-        element: <JobDetailsAdmin />,
+        element: (
+          <AuthGuard>
+             <JobDetailsAdmin />
+          </AuthGuard>
+        ),
+       
       },
       {
         path: '/admin/pendingJobs',
-        element: <PendingJobs />,
+        element: (
+          <AuthGuard>
+              <PendingJobs />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/admin/pendingJobDetails/:jobId',
-        element: <PendingJobDetails />,
+        element: (
+          <AuthGuard>
+              <PendingJobDetails />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/admin/employerDetails/:employerId',
-        element: <ReadEmployerDetails />,
+        element: (
+          <AuthGuard>
+            <ReadEmployerDetails />
+          </AuthGuard>
+        ),
+        
       },
       {
         path: '/admin/employers',
-        element: <EmployersList />,
+        element: (
+          <AuthGuard>
+             <EmployersList />
+          </AuthGuard>
+        ),
+       
       },
 
       {
