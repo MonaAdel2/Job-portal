@@ -66,7 +66,7 @@ function ReviewProposels() {
        {Job && (
                     <>
                         <p className='job-title'>{Job.jobTitle}</p>
-                        <p className='job-date'>new Date(Job.postDate).toLocaleDateString()</p>
+                        <p className='job-date'>{new Date(Job.postDate).toLocaleDateString()}</p>
                         <div className='job-type-div'>
                         <p className='job-type-text'>Job Type:</p>
                         <p className='job-type'>{Job.jobType}</p>

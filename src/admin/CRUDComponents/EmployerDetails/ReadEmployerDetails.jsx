@@ -1,15 +1,16 @@
 import Button from "../../../Shared/Button";
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import {useParams, useNavigate} from 'react-router-dom';
 import './ReadEmployerDetails.css'
-import { Modal } from 'react-responsive-modal';
+import {Modal} from 'react-responsive-modal';
 import AdminHeader from "../../AdminHeader";
+
 function ReadEmployerDetails() {
-    const { employerId } = useParams();
+    const {employerId} = useParams();
     const token = localStorage.getItem('token');
     const navigate = useNavigate();
 
-    const dummyData ={
+    const dummyData = {
         "id": "1",
         "email": "mona@gmail,com",
         "company": "Google",
@@ -27,18 +28,17 @@ function ReadEmployerDetails() {
 
 
     const [details, setEmployerDetails] = useState(null);
-    const [user, setUser] = useState(); // set the initial state to the employer's data
+    const [user, setUser] = useState(blankUser); // set the initial state to the employer's data
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = `https://jobconnectapi-1.onrender.com/admin/employers/${employerId}`
-            const tokenn = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTUwOTMwODAsImlzcyI6ImpvYkNvbm5lY3QifQ.UmEbfhv5RSTni36hgMUaAMxNFQksAge4bCxe3ifWBy8"
+            const url = `http://localhost:5109/admin/employers/${employerId}`
             try {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization' : `Bearer ${tokenn}`
+                        'Authorization': `Bearer ${token}`
                     }
                 });
                 const data = await response.json();
@@ -55,7 +55,7 @@ function ReadEmployerDetails() {
 
     const [open, setOpen] = useState(false);
     const [action, setAction] = useState('Update');
-    
+
 
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => {
@@ -64,13 +64,14 @@ function ReadEmployerDetails() {
     };
 
     const updateUser = async () => {
+        user.role = "employer"
         try {
 
             const response = await fetch(`http://localhost:5109/admin/employers/${employerId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization' : `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
 
                 },
                 body: JSON.stringify(user)
@@ -104,47 +105,53 @@ function ReadEmployerDetails() {
         <>
             <AdminHeader/>
             {details ? (
-            <>
-                <div className="employer-name">
-                    <h1>Name: {details.userName}</h1>
-                </div>
-
-                <div>
-                    <ul className="employer-details">
-                        <li><b>Employer ID: </b> {details.id}</li>
-                        <li><b>Email: </b> {details.email}</li>
-                        <li><b>Company: </b> {details.company}</li>
-                        <li><b>Industry: </b> {details.industry}</li>
-                    </ul>
-                </div>
-
-                <div className="btn-container">
-                    <button className="button" onClick={deleteUser}>Delete</button>
-                </div>
-
-                <div className="btn-container2">
-                    <button className="button" onClick={onOpenModal}>Update</button>
-                </div>
-
-                <Modal open={open} onClose={onCloseModal} center>
-                    <h2>{action} Employer</h2>
-                    <div className='form'>
-                        <label htmlFor="">User Name</label>
-                        <input type="text" value={user.userName} onChange={(e) => setUser({ "UserName": e.target.value })} />
-                        <label htmlFor="">Email</label>
-                        <input type="email" value={user.email} onChange={(e) => setUser({ "Email": e.target.value })} />
-                        <label htmlFor="">Company</label>
-                        <input type="text" value={user.company} onChange={(e) => setUser({  "Company": e.target.value })} />
-                        <label htmlFor="">Industry</label>
-                        <input type="text" value={user.industry} onChange={(e) => setUser({ "Industry": e.target.value })} />
-                        <button className='button' style={{position: 'relative', marginTop: '10px',width: '100%', right: '0'}} onClick={updateUser}>Update</button>
+                <>
+                    <div className="employer-name">
+                        <h1>Name: {details.userName}</h1>
                     </div>
-                </Modal>
-            </>
-             ) : (
-            <p style={{ textAlign: 'center' }}>No details available. Please try again later</p>
-        )}
 
+                    <div>
+                        <ul className="employer-details">
+                            <li><b>Employer ID: </b> {details.id}</li>
+                            <li><b>Email: </b> {details.email}</li>
+                            <li><b>Company: </b> {details.company}</li>
+                            <li><b>Industry: </b> {details.industry}</li>
+                        </ul>
+                    </div>
+
+                    <div className="btn-container">
+                        <button className="button" onClick={deleteUser}>Delete</button>
+                    </div>
+
+                    <div className="btn-container2">
+                        <button className="button" onClick={onOpenModal}>Update</button>
+                    </div>
+
+                    <Modal open={open} onClose={onCloseModal} center>
+                        <h2>{action} Employer</h2>
+                        <div className='form'>
+                            <label htmlFor="">User Name</label>
+                            <input type="text" value={user.userName}
+                                   onChange={(e) => setUser({...user, "userName": e.target.value})}/>
+                            <label htmlFor="">Email</label>
+                            <input type="email" value={user.email}
+                                   onChange={(e) => setUser({ ...user, "email": e.target.value})}/>
+                            <label htmlFor="">Industry</label>
+                            <input type="text" value={user.industry}
+                                   onChange={(e) => setUser({ ...user, "industry": e.target.value})}/>
+                            <label htmlFor="">Company</label>
+                            <input type="text" value={user.company}
+                                   onChange={(e) => setUser({ ...user, "company": e.target.value})}/>
+                        </div>
+                        <button className='button'
+                                style={{position: 'relative', marginTop: '10px', width: '100%', right: '0'}}
+                                onClick={updateUser}>Update
+                        </button>
+                    </Modal>
+                </>
+            ) : (
+                <p style={{textAlign: 'center'}}>No details available. Please try again later</p>
+            )}
         </>
     );
 }

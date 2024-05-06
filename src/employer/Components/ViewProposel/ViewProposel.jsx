@@ -113,7 +113,6 @@ function ViewProposel() {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            navigate("/jobsList")
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -156,7 +155,7 @@ function ViewProposel() {
         </div>
         <div className='submitted-date-div'> 
         <p className='proposal-submitted-date-text' >Submitted Date:</p>
-        <p className='proposal-submitt  ed-date'> new Date(proposal.submissionDate).toLocaleDateString()</p>
+        <p className='proposal-submitt  ed-date'> {new Date(proposal.submissionDate).toLocaleDateString()}</p>
         </div>
         <div className='cover-letter-div'>
             <p className='proposal-cover-letter-text'>Cover letter:</p>
@@ -166,7 +165,7 @@ function ViewProposel() {
 {/*   
         <button className='accept-proposal-button' onClick={handleAccept}>Accept</button>
         <button className='reject-proposal-button' onClick={handleReject}>reject</button> */}
-        { proposal.Status === 0 && 
+        { proposal.status === 0 &&
         <>   <button className='accept-proposal-button' onClick={handleAccept}>Accept</button> 
         <button className='reject-proposal-button' onClick={handleReject}>Reject</button>  
         </>}
