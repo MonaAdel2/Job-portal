@@ -24,7 +24,7 @@ function Chat() {
 
     const fetchPreviousMessages = async () => {
         try {
-            const url =`http://localhost:5109/chat/job-seeker/${chatId}`
+            const url =`http://localhost:5109/job-seeker/chat/${chatId}`
 
             const response = await fetch(url, {
                 method: 'GET',
@@ -61,8 +61,7 @@ function Chat() {
         };
 
         try {
-            // const url =`http://localhost:5109/chat/send?content=${newMessage.content}&receiverId=${newMessage.receiverId}&chatId=${newMessage.chatId}`
-            const newurl =`http://localhost:5109/chat/send`
+            const newurl =`http://localhost:5109/job-seeker/chat/send`
 
             const response = await fetch(newurl, {
                 method: 'POST',

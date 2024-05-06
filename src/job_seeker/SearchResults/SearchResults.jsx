@@ -216,7 +216,8 @@ function SearchResults() {
                             <li style={{ textDecoration: 'none' }} key={index}>
                                 <JobCard
                                     title={job.jobTitle}
-                                    salary={`${job.salray}`}
+                                    location={job.location}
+                                    salray={`${job.salray}`}
                                     type={job.jobType}
                                     jobId={job.jobId} />
                             </li>

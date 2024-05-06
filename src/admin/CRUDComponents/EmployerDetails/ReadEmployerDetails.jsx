@@ -44,11 +44,10 @@ function ReadEmployerDetails() {
 
     const blankUser = {
         "Email": "",
-        "Password": "",
         "Company": "",
         "Industry": "",
         "UserName": "",
-        'Role': "Employer"
+        'Role': "employer"
     };
 
     const [open, setOpen] = useState(false);
@@ -130,9 +129,7 @@ function ReadEmployerDetails() {
                         <label htmlFor="">User Name</label>
                         <input type="text" value={user.userName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
                         <label htmlFor="">Email</label>
-                        <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
-                        <label htmlFor="">Password</label>
-                        <input type="text" value={user.password} onChange={(e) => setUser({ ...user, "Password": e.target.value })} />
+                        <input type="email" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
                         <label htmlFor="">Company</label>
                         <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
                         <label htmlFor="">Industry</label>

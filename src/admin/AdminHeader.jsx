@@ -7,27 +7,7 @@ function AdminHeader(){
     const token = localStorage.getItem('token');
     
     const handleLogout = async () => {
-
-        try {
-            const url= "http://localhost:5109/login" // url for logout (admin)
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json', // Adjust if your API requires headers
-                    'Authorization':`Bearer ${token}`
-                },
-                body: JSON.stringify(userData)
-            });
-            const data = await response.json();
-            if (data.successful === true) {
-                console.log("Logged out");
-                localStorage.removeItem('token');
-            } else {
-                
-            }
-        } catch (error) {
-            
-        }
+        localStorage.removeItem('token');
     }
     
     return(
@@ -44,9 +24,6 @@ function AdminHeader(){
                 <li>
                     <Link to={'/admin/employers'}>Employers</Link>
                 </li>
-
-                
-                
                 <li>
                     <Link to={"/login"} onClick={handleLogout}>Logout</Link>
                 </li>

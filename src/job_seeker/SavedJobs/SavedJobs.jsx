@@ -48,7 +48,7 @@ function SavedJobs(){
                                         <SavedJobCard
                                             title={job.jobTitle}
                                             id={job.jobId}
-                                            // location={job.location}
+                                            location={job.location}
                                             salary={job.salray}
                                             type={job.jobType}
                                         />

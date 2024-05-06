@@ -104,7 +104,7 @@ function ViewProposel() {
         try {
             const baseurl = `http://localhost:5109/jobs/proposals/${proposalId}/reject`
             const response = await fetch(baseurl, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ function ViewProposel() {
         </div>
         <div className='submitted-date-div'> 
         <p className='proposal-submitted-date-text' >Submitted Date:</p>
-        <p className='proposal-submitted-date'>{proposal.submissionDate}</p>
+        <p className='proposal-submitt  ed-date'>{proposal.submissionDate}</p>
         </div>
         <div className='cover-letter-div'>
             <p className='proposal-cover-letter-text'>Cover letter:</p>

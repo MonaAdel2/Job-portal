@@ -13,7 +13,7 @@ function ChatsList() {
 
     const fetchChats = async () => {
         try {
-            const url = 'http://localhost:5109/chat/job-seeker'
+            const url = 'http://localhost:5109/job-seeker/chat/'
 
             const response = await fetch(url, {
                 method: 'GET',
@@ -44,7 +44,7 @@ function ChatsList() {
                         <li key={chat.id} style={{ textDecoration: 'none' }}>
                             <ChatCard chatTitle={chat.employer.userName}
                                       chatId={chat.id}
-                                      lastMessage={chat.messages.length > 0 ? chats[0].messages.slice(-1)[0].content : "Start Chat Now!"} />
+                                      lastMessage={"Start Chat Now!"} />
                         </li>
                     ))}
                 </ul>

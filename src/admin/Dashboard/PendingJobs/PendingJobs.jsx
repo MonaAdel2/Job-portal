@@ -47,7 +47,7 @@ function PendingJobs(){
                                 jobDescription={job.jobDescription}
                                 title={job.jobTitle}
                                 // location={job.location}
-                                salary={`${job.salray}`}
+                                salray={`${job.salray}`}
                                 type={job.jobType}
                                 jobId={job.jobId}/>
                     </li>

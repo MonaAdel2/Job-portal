@@ -85,8 +85,8 @@ function DashboardAdmin(){
                             <JobCard 
                                     flag="j"
                                     title={job.jobTitle}
-                                    // location={job.location}
-                                    salary={`${job.salray}`}
+                                    location={job.location}
+                                    salray={`${job.salray}`}
                                     type={job.jobType}
                                     jobId={job.jobId}/>
                             

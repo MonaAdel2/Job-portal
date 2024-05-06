@@ -63,7 +63,7 @@ function JobCard(props){
                 <div className="card-text">
                     <ElementWithIcon label={props.location} icon={locationIcon} />
                     <ElementWithIcon label={props.type} icon={jobIcon} />
-                    <ElementWithIcon label={props.salary} icon={salaryIcon} />
+                    <ElementWithIcon label={props.salray} icon={salaryIcon} />
                 </div>
             </div>
             <Button_card jobId={props.jobId}/>

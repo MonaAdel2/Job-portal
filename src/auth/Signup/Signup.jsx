@@ -50,20 +50,14 @@ function Signup (props){
             },
             body: JSON.stringify(userData)
         });
-        const data = await response.json();
-        if (data.ok) {
-            const token = data.token; 
-            localStorage.setItem('token', token);
-            
-            if(jobRole === "employer"){
-                navigate('/postJob')
-            }else if(jobRole === "jobseeker"){
-                navigate('/job-seeker/home')
-            }
+        if (response.ok) {
+            navigate("/login")
+            // const token = data.token;
+
             setError("User successfully registered!");
 
         } else {
-            // setError("Failed to register user");
+             setError("Failed to register user");
         }
     } catch (error) {
         setError("Error occurred, please try again later");

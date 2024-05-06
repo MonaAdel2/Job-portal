@@ -72,7 +72,7 @@ function  Login(props) {
                 <option value="">Select</option>
                 <option value="admin">Admin</option>
                 <option value="jobseeker">Jobseeker</option>
-                <option value="employeer">Employeer</option>
+                <option value="employer">Employer</option>
             </select>
             <button className="login-button" type="submit">Login</button>
             

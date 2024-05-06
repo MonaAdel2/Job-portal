@@ -12,7 +12,7 @@ function JobProposal() {
     const {jobId} = useParams()
 
     const handleClick = () => {
-        toast.success("Thanks for your applying. Your proposal is received.");
+        console.log("Thanks for your applying. Your proposal is received.");
     }
 
     const handleFileChange = (event) => {
@@ -26,7 +26,7 @@ function JobProposal() {
 
     const handleSubmit = async (event) => {
         console.log("the endpoint should be called");
-
+        console.log("job id:", jobId)
         event.preventDefault();
         const formData = new FormData();
         const submissionDate = new Date().toISOString();
@@ -81,7 +81,7 @@ function JobProposal() {
                                required
                                onChange={handleFileChange}></input>
                     </div>
-                    <button className="button" style={{right: '5%'}}>
+                    <button type="submit" className="button" style={{right: '5%'}}>
                         <Link to={'/job-seeker/applyJob/' + {jobId} + '/submitted'}>Submit</Link>
                     </button>
                 </form>
