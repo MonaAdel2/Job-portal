@@ -8,18 +8,17 @@ function ChatsList() {
     let lastMessage ;
     const token = localStorage.getItem("token")
     useEffect(() => {
-        // Fetch chats for the current job seeker ID when component mounts
         fetchChats();
-    }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+    }, []); 
 
     const fetchChats = async () => {
         try {
             const url = 'http://localhost:5109/chat/job-seeker'
-            // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
+
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json', // Adjust if your API requires headers
+                    'Content-Type': 'application/json', 
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -27,7 +26,7 @@ function ChatsList() {
                 throw new Error('Failed to fetch chats');
             }
             const data = await response.json();
-            setChats(data); // Assuming the API returns an array of chats
+            setChats(data); 
             lastMessage = data.messages.length > 0 ? chats[0].messages.slice(-1)[0] : "Start Chat Now!";
             console.log("The last message is ", lastMessage)
         } catch (error) {

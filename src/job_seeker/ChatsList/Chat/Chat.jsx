@@ -19,19 +19,17 @@ function Chat() {
     ]
 
     useEffect(() => {
-        // Fetch previous messages when component mounts
         fetchPreviousMessages();
-    }, [chatId]); // Re-fetch previous messages when chatId changes
+    }, [chatId]); 
 
     const fetchPreviousMessages = async () => {
         try {
             const url =`http://localhost:5109/chat/job-seeker/${chatId}`
 
-            // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json', // Adjust if your API requires headers
+                    'Content-Type': 'application/json', 
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -39,7 +37,7 @@ function Chat() {
                 throw new Error('Failed to fetch previous messages');
             }
             const chat = await response.json();
-            setMessages(chat.messages); // Assuming the API returns an array of messages
+            setMessages(chat.messages); 
             setChat(chat)
         } catch (error) {
             console.error('Error fetching previous messages:', error);
@@ -52,14 +50,14 @@ function Chat() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (inputMessage.trim() === '') return; // Prevent sending empty messages
+        if (inputMessage.trim() === '') return; 
 
         const newMessage = {
             content : inputMessage,
             sentDate: new Date(),
             senderName: chat.jobSeeker.userName,
             recipientName: chat.employer.userName,
-            chatId: chat.id// You can adjust the sender as needed
+            chatId: chat.id
         };
 
         try {
@@ -77,7 +75,7 @@ function Chat() {
             if (!response.ok) {
                 throw new Error('Failed to send message');
             }
-            setMessages([...messages, newMessage]); // Update messages state with the new message
+            setMessages([...messages, newMessage]); 
             setInputMessage('');
         } catch (error) {
             console.error('Error sending message:', error);

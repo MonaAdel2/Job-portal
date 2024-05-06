@@ -8,6 +8,7 @@ function EmployerChat() {
     const [chat, setChat] = useState();
     const [inputMessage, setInputMessage] = useState('');
     const { chatId } = useParams();
+    const token = localStorage.getItem("token")
 
     const messagesList = [
         {sender: 'sender', text: 'message message message message', timestamp: '03:10 pm'},
@@ -18,20 +19,18 @@ function EmployerChat() {
     ]
 
     useEffect(() => {
-        // Fetch previous messages when component mounts
         fetchPreviousMessages();
-    }, [chatId]); // Re-fetch previous messages when chatId changes
+    }, [chatId]); 
 
     const fetchPreviousMessages = async () => {
         try {
             const url =`http://localhost:5109/chat/job-seeker/${chatId}`
 
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ4NDk4NDcsImlzcyI6ImpvYkNvbm5lY3QifQ.lLCoEpvUk8Bo3TxNNJ007Mp0CqIjXjFpTZ9jD4Bi47Y";
-            // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
+            // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ4NDk4NDcsImlzcyI6ImpvYkNvbm5lY3QifQ.lLCoEpvUk8Bo3TxNNJ007Mp0CqIjXjFpTZ9jD4Bi47Y";
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json', // Adjust if your API requires headers
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
@@ -39,7 +38,7 @@ function EmployerChat() {
                 throw new Error('Failed to fetch previous messages');
             }
             const chat = await response.json();
-            setMessages(chat.messages); // Assuming the API returns an array of messages
+            setMessages(chat.messages);
             setChat(chat)
         } catch (error) {
             console.error('Error fetching previous messages:', error);
@@ -52,14 +51,14 @@ function EmployerChat() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (inputMessage.trim() === '') return; // Prevent sending empty messages
+        if (inputMessage.trim() === '') return;
 
         const newMessage = {
             content : inputMessage,
             sentDate: new Date().toLocaleTimeString(),
             senderName: chat.jobSeeker.userName,
             recipientName: chat.employer.userName,
-            chatId: chat.id// You can adjust the sender as needed
+            chatId: chat.id
         };
 
         try {
@@ -78,7 +77,7 @@ function EmployerChat() {
             if (!response.ok) {
                 throw new Error('Failed to send message');
             }
-            setMessages([...messages, newMessage]); // Update messages state with the new message
+            setMessages([...messages, newMessage]);
             setInputMessage('');
         } catch (error) {
             console.error('Error sending message:', error);
