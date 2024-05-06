@@ -103,14 +103,14 @@ function Signup (props){
 
             {showEmployerFields && (
                 <>
-                    <div className="company-div">
-                    <label className='company-label'htmlFor="company">Company</label>
-                    <input className="register-input" value={company} type="text" placeholder="company" id="company" name="company" onChange={(e) => setCompany(e.target.value)}></input>
-                    </div>
-                    <div className="industry-div"> 
-                    <label className='industry-label' htmlFor="name">Industry</label>
-                    <input className="register-input" value={industry} type="text" placeholder="industry" id="industry" name="industry" onChange={(e) => setIndustry(e.target.value)}></input>
-                    </div>
+                    {/* <div className="company-div"> */}
+                        <label className='company-label'htmlFor="company" style={{marginLeft: "5.5ch"}}>Company</label>
+                        <input className="register-input" value={company} type="text" placeholder="company" id="company" name="company" onChange={(e) => setCompany(e.target.value)}></input>
+                    {/* </div> */}
+                    {/* <div className="industry-div">  */}
+                        <label className='industry-label' htmlFor="name" style={{marginLeft: "5.5ch"}}>Industry</label>
+                        <input className="register-input" value={industry} type="text" placeholder="industry" id="industry" name="industry" onChange={(e) => setIndustry(e.target.value)}></input>
+                    {/* </div> */}
                 </>
             )}
             <button className="register-button" type="submit">Sign up</button>
