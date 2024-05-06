@@ -17,23 +17,34 @@ function ReadEmployerDetails() {
         "userName": "Mona Adel",
     }
 
+    const blankUser = {
+        "email": "",
+        "company": "",
+        "industry": "",
+        "userName": "",
+        'role': "employer"
+    };
+
+
     const [details, setEmployerDetails] = useState(null);
     const [user, setUser] = useState(); // set the initial state to the employer's data
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = `http://localhost:5109/admin/employers/${employerId}`
+            const url = `https://jobconnectapi-1.onrender.com/admin/employers/${employerId}`
+            const tokenn = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTUwOTMwODAsImlzcyI6ImpvYkNvbm5lY3QifQ.UmEbfhv5RSTni36hgMUaAMxNFQksAge4bCxe3ifWBy8"
             try {
                 const response = await fetch(url, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization' : `Bearer ${token}`
+                        'Authorization' : `Bearer ${tokenn}`
                     }
                 });
                 const data = await response.json();
                 setEmployerDetails(data);
                 setUser(data)
+
                 console.log(`employer data: ${data.employer}`);
             } catch (error) {
                 console.error("Error fetching employer data:", error);
@@ -41,14 +52,6 @@ function ReadEmployerDetails() {
         };
         fetchData();
     }, [employerId]);
-
-    const blankUser = {
-        "Email": "",
-        "Company": "",
-        "Industry": "",
-        "UserName": "",
-        'Role': "employer"
-    };
 
     const [open, setOpen] = useState(false);
     const [action, setAction] = useState('Update');
@@ -127,13 +130,13 @@ function ReadEmployerDetails() {
                     <h2>{action} Employer</h2>
                     <div className='form'>
                         <label htmlFor="">User Name</label>
-                        <input type="text" value={user.userName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
+                        <input type="text" value={user.userName} onChange={(e) => setUser({ "UserName": e.target.value })} />
                         <label htmlFor="">Email</label>
-                        <input type="email" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
+                        <input type="email" value={user.email} onChange={(e) => setUser({ "Email": e.target.value })} />
                         <label htmlFor="">Company</label>
-                        <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
+                        <input type="text" value={user.company} onChange={(e) => setUser({  "Company": e.target.value })} />
                         <label htmlFor="">Industry</label>
-                        <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
+                        <input type="text" value={user.industry} onChange={(e) => setUser({ "Industry": e.target.value })} />
                         <button className='button' style={{position: 'relative', marginTop: '10px',width: '100%', right: '0'}} onClick={updateUser}>Update</button>
                     </div>
                 </Modal>
@@ -142,43 +145,6 @@ function ReadEmployerDetails() {
             <p style={{ textAlign: 'center' }}>No details available. Please try again later</p>
         )}
 
-            {/* <div className="employer-name">
-                        <h1>Name: {dummyData.userName}</h1>
-                    </div>
-
-                    <div>
-                        <ul className="employer-details">
-                            <li><b>Employer ID: </b> {dummyData.id}</li>
-                            <li><b>Email: </b> {dummyData.email}</li>
-                            <li><b>Company: </b> {dummyData.company}</li>
-                            <li><b>Industry: </b> {dummyData.industry}</li>
-                        </ul>
-                    </div>
-
-                    <div className="btn-container2">
-                        <button className="button" onClick={deleteUser}>Delete</button>
-                    </div>
-
-                    <div className="btn-container">
-                        <button className="button" onClick={onOpenModal}>Update</button>
-                    </div>
-
-                    <Modal open={open} onClose={onCloseModal} center>
-                        <h2>{action} Employer</h2>
-                        <div className='form'>
-                            <label htmlFor="">User Name</label>
-                            <input type="text" value={user.userName} onChange={(e) => setUser({ ...user, "UserName": e.target.value })} />
-                            <label htmlFor="">Email</label>
-                            <input type="text" value={user.email} onChange={(e) => setUser({ ...user, "Email": e.target.value })} />
-                            <label htmlFor="">Password</label>
-                            <input type="text" value={user.password} onChange={(e) => setUser({ ...user, "Password": e.target.value })} />
-                            <label htmlFor="">Company</label>
-                            <input type="text" value={user.company} onChange={(e) => setUser({ ...user, "Company": e.target.value })} />
-                            <label htmlFor="">Industry</label>
-                            <input type="text" value={user.industry} onChange={(e) => setUser({ ...user, "Industry": e.target.value })} />
-                            <button className='button' style={{ position: 'relative', marginTop: '10px' }} onClick={updateUser}>Update</button>
-                        </div>
-                    </Modal> */}
         </>
     );
 }

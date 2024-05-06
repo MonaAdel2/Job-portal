@@ -102,7 +102,7 @@ function PendingJobDetails() {
                                 <li><b>Job description</b>
                                 </li>
                             </ul>
-                            <p style={{marginLeft: '25px'}}>{details.jobDescription}</p>
+                            <p style={{marginLeft: '25px', marginRight: '25px', width: '100%'}}>{details.jobDescription}</p>
                         </div>
                         <div className="btn-container">
                             <button className="button"

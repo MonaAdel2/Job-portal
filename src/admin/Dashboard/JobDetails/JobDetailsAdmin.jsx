@@ -101,10 +101,9 @@ function JobDetailsAdmin(){
                     <li><b>Job Type : </b> {details.jobType}</li>
                     <li><b>Salary : </b> {`${details.salray}`}</li>
                     <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                    <li><b>Job description</b>
-                        <p style={{marginLeft: '25px'}}>{detail.jobDescription}</p>
-                    </li>
+                    <li><b>Job description</b></li>
                 </ul>
+                <p style={{marginLeft: '25px', marginRight: '25px', width: '100%'}}>{detail.jobDescription}</p>
             </div>
         </>
          ) : (

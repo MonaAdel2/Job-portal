@@ -22,7 +22,7 @@ function Search(){
     return(
         <div className="search-container">
             <input
-                type="text"
+                type="search"
                 className="edit-text"
                 placeholder="Search by job title ........"
                 required

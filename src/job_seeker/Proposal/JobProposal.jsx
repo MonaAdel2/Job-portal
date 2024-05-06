@@ -1,7 +1,7 @@
 import './JobProposal.css'
 import {ToastContainer, toast} from 'react-toastify';
 import React, {useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import MyHeader from '../NavBar/MyHeader';
 
 function JobProposal() {
@@ -10,6 +10,15 @@ function JobProposal() {
     const [selectedFile, setSelectedFile] = useState(null);
     const [coverLetter, setCoverLetter] = useState("")
     const {jobId} = useParams()
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    const [proposal, setProposal] = useState(
+        {
+            "cv": "",
+            "coverLetter": ""
+        }
+    )
 
     const handleClick = () => {
         console.log("Thanks for your applying. Your proposal is received.");
@@ -25,6 +34,10 @@ function JobProposal() {
     }
 
     const handleSubmit = async (event) => {
+        if (!coverLetter || !selectedFile ) {
+            setError("Please fill out all required fields");
+            return;
+        }
         console.log("the endpoint should be called");
         console.log("job id:", jobId)
         event.preventDefault();
@@ -47,6 +60,7 @@ function JobProposal() {
             });
             if (response.ok) {
                 console.log('File uploaded successfully');
+                navigate(`/job-seeker/applyJob/${jobId}/submitted`);
             } else {
                 console.error('Failed to upload file');
             }
@@ -81,8 +95,9 @@ function JobProposal() {
                                required
                                onChange={handleFileChange}></input>
                     </div>
-                    <button type="submit" className="button" style={{right: '5%'}}>
-                        <Link to={'/job-seeker/applyJob/' + {jobId} + '/submitted'}>Submit</Link>
+                    <button type="submit" className="button" style={{right: '5%'}} onClick={handleSubmit}>
+                        {/* <Link to={'/job-seeker/applyJob/' + {jobId} + '/submitted'}>Submit</Link> */}
+                        Submit
                     </button>
                 </form>
 

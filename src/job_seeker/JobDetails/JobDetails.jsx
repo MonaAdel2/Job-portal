@@ -52,11 +52,10 @@ function JobDetails(){
                             <li><b>Job Type : </b> {details.jobType}</li>
                             <li><b>Salary : </b> {`${details.salray}`}</li>
                             <li><b>Date : </b> {new Date(details.postDate).toLocaleDateString()}</li>
-                            <li className="job-description">
-                                <b>Job description </b>
-                                <p>{details.jobDescription}</p>
-                            </li>
+                            <li className="job-description"> <b>Job description </b></li>
+                            
                         </ul>
+                        <p style={{marginLeft: '25px', marginRight: '25px', width: '100%'}}>{details.jobDescription}</p>
                     </div>
                     <div className="btn-container">
                         {/* <Button title="Apply This Job" /> */}
