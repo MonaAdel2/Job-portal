@@ -146,27 +146,27 @@ function ViewProposel() {
         <button className='reject' onClick={handleReject}>reject</button>
       </div> */}
       <div className='job-list-container'>
-      <div className='job-details-header'>Proposel</div>
+      <div className='job-details-header'>Proposal</div>
     </div>
-      <div className='proposel-container'>
-        <p className='proposal-username'>proposal.jobSeeker.userName</p>
+        {proposal && <div className='proposel-container'>
+        <p className='proposal-username'>{proposal.jobSeeker.userName}</p>
         <div className='contact-div'>
             <p className='contact-text'>Contact:</p>
-            <p className='proposal-contact'>proposal.jobSeeker.email</p>
+            <p className='proposal-contact'>{proposal.jobSeeker.email}</p>
         </div>
         <div className='submitted-date-div'> 
         <p className='proposal-submitted-date-text' >Submitted Date:</p>
-        <p className='proposal-submitted-date'>proposal.submissionDate</p>
+        <p className='proposal-submitted-date'>{proposal.submissionDate}</p>
         </div>
         <div className='cover-letter-div'>
             <p className='proposal-cover-letter-text'>Cover letter:</p>
-            <p className='proposal-cover-letter'>proposal.coverLetter</p>
+            <p className='proposal-cover-letter'>{proposal.coverLetter}</p>
          <button className='download-resume-button' onClick={downloadFile}>Download resume</button>  
         </div>
   
         <button className='accept-proposal-button' onClick={handleAccept}>Accept</button>
         <button className='reject-proposal-button' onClick={handleReject}>reject</button>
-      </div>
+      </div>}
     </div>
 
   )
