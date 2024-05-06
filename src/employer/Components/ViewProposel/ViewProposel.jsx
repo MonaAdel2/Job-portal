@@ -163,9 +163,13 @@ function ViewProposel() {
             <p className='proposal-cover-letter'>{proposal.coverLetter}</p>
          <button className='download-resume-button' onClick={downloadFile}>Download resume</button>  
         </div>
-  
+{/*   
         <button className='accept-proposal-button' onClick={handleAccept}>Accept</button>
-        <button className='reject-proposal-button' onClick={handleReject}>reject</button>
+        <button className='reject-proposal-button' onClick={handleReject}>reject</button> */}
+        { proposal.Status === 0 && 
+        <>   <button className='accept-proposal-button' onClick={handleAccept}>Accept</button> 
+        <button className='reject-proposal-button' onClick={handleReject}>Reject</button>  
+        </>}
       </div>}
     </div>
 
