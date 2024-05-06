@@ -60,11 +60,10 @@ function Signup (props){
             }else if(jobRole === "jobseeker"){
                 navigate('/job-seeker/home')
             }
-            
             setError("User successfully registered!");
 
         } else {
-            setError("Failed to register user");
+            // setError("Failed to register user");
         }
     } catch (error) {
         setError("Error occurred, please try again later");

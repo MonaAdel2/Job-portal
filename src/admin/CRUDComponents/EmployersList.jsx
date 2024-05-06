@@ -28,7 +28,7 @@ function EmployersList() {
         "Company": "",
         "Industry": "",
         "UserName": "",
-        'Role': "Employer"
+        'Role': "employer"
     });
 
     const [isFormValid, setIsFormValid] = useState(false);
@@ -38,8 +38,7 @@ function EmployersList() {
     }, []);
 
     const fetchEmployersList = async () => {
-        const url = `https://jobconnectapi-1.onrender.com/admin/employers`
-        // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImEzODc1MWMxLTQ5ZjctNDNmZC05ZDJmLTljYjA0Y2U4NzFhNyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xMjMiLCJleHAiOjE3MTQ5OTM0NDUsImlzcyI6ImpvYkNvbm5lY3QifQ.net0LJuj85FCpfO12pcpfvZDocGzUvXl0DWOuvzAIqw"
+        const url = `http://localhost:5109/admin/employers`
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -73,7 +72,6 @@ function EmployersList() {
         }
         try {
             const url = `http://localhost:5109/admin/employers`
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6Ijk5YjYxM2RjLWM4OGQtNDRmNC1hNjFhLTYzZGNhZDNhM2EyYyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiQWRtaW4xIiwiZXhwIjoxNzE0OTYyNjYyLCJpc3MiOiJqb2JDb25uZWN0In0.CZV4pNmyRSR4d03TqGv450ay_UnE9AFa2FbE6rxI6pg"
 
             const response = await fetch(url, {
                 method: 'POST',

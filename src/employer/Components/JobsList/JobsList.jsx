@@ -15,7 +15,7 @@ function JobList(props) {
    const fetchData = async () => {
      console.log('Fetching data...');
        try {
-           const response = await fetch('https://jobconnectapi-1.onrender.com/employer/jobs', {
+           const response = await fetch('http://localhost:5109/employer/jobs', {
                method: 'GET',
                headers: {
                    'Authorization': `Bearer ${token}`,

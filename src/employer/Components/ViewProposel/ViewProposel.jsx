@@ -6,7 +6,7 @@ import axios from "axios";
 import saveAs from 'file-saver';
 
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjIzZjljNzJkLTIyYTQtNDQzNi04MDdmLWJkODJkMGFlMWY3NSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZ2l2ZW5uYW1lIjoiRW1wbG95ZXIyIiwiZXhwIjoxNzE0OTg2NTc0LCJpc3MiOiJqb2JDb25uZWN0In0.Hl_fqG7KR_oEZcNSwLLtJqO9Qu8lncIb73gWnNjEMnQ";
+const token = localStorage.getItem("token");
 
 function ViewProposel() {
     const {proposalId} = useParams();
@@ -64,7 +64,7 @@ function ViewProposel() {
         console.log('Fetching data...');
 
         try {
-            const baseurl = `https://jobconnectapi-1.onrender.com/jobs/proposals/${proposalId}`
+            const baseurl = `http://localhost:5109/jobs/proposals/${proposalId}`
             const response = await fetch(baseurl, {
                 method: 'GET',
                 headers: {
@@ -146,7 +146,7 @@ function ViewProposel() {
         <button className='reject' onClick={handleReject}>reject</button>
       </div> */}
       <div className='job-list-container'>
-      <div className='job-details-header'>Proposel</div> 
+      <div className='job-details-header'>Proposel</div>
     </div>
       <div className='proposel-container'>
         <p className='proposal-username'>proposal.jobSeeker.userName</p>

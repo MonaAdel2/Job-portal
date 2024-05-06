@@ -6,6 +6,7 @@ import MyHeader from '../NavBar/MyHeader';
 function ChatsList() {
     const [chats, setChats] = useState([]);
     let lastMessage ;
+    const token = localStorage.getItem("token")
     useEffect(() => {
         // Fetch chats for the current job seeker ID when component mounts
         fetchChats();
@@ -13,8 +14,7 @@ function ChatsList() {
 
     const fetchChats = async () => {
         try {
-            const url = 'https://jobconnectapi-1.onrender.com/chat/job-seeker'
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjI5YzVhN2RmLWE5M2MtNGVmNi1iMzUwLTEzYTliYzY3M2U3MyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkpvYlNlZWtlciIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IkpvYlNlZWtlcjEiLCJleHAiOjE3MTQ5OTgyMDgsImlzcyI6ImpvYkNvbm5lY3QifQ.-_QOM2QUFWAdyWkFIMQxVWx1g0v6exay2VgRKP-ExUw"
+            const url = 'http://localhost:5109/chat/job-seeker'
             // Replace 'YOUR_API_ENDPOINT' with the actual endpoint to fetch chats for the job seeker
             const response = await fetch(url, {
                 method: 'GET',
@@ -45,7 +45,7 @@ function ChatsList() {
                         <li key={chat.id} style={{ textDecoration: 'none' }}>
                             <ChatCard chatTitle={chat.employer.userName}
                                       chatId={chat.id}
-                                      lastMessage={chat.messages.length > 0 ? chats[0].messages.slice(-1)[0].content : "Start Chat Now!"} /> //Todo
+                                      lastMessage={chat.messages.length > 0 ? chats[0].messages.slice(-1)[0].content : "Start Chat Now!"} />
                         </li>
                     ))}
                 </ul>
