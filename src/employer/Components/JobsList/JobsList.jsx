@@ -43,7 +43,7 @@ function JobList(props) {
         return(
          <div className='job-card' key={key} >
            <p className='job-title'>{val.jobTitle}</p>
-           <p className='job-date'>{val.postDate}</p>
+           <p className='job-date'> new Date(val.postDate).toLocaleDateString()</p>
            <p className='job-description'>{val.jobDescription}</p>
            <Link to={`/reviewProposels/${val.jobId}`}>
                 <button className='explore-button'>Explore</button>

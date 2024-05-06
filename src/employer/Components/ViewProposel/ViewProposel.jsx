@@ -156,7 +156,7 @@ function ViewProposel() {
         </div>
         <div className='submitted-date-div'> 
         <p className='proposal-submitted-date-text' >Submitted Date:</p>
-        <p className='proposal-submitt  ed-date'>{proposal.submissionDate}</p>
+        <p className='proposal-submitt  ed-date'> new Date(proposal.submissionDate).toLocaleDateString()</p>
         </div>
         <div className='cover-letter-div'>
             <p className='proposal-cover-letter-text'>Cover letter:</p>
